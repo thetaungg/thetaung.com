@@ -1,3 +1,6 @@
+import Envelope from '../assets/icons/envelope.svg?raw';
+import Github from '../assets/icons/github.svg?raw';
+import Linkedin from '../assets/icons/linkedin.svg?raw';
 import Me from '../assets/me.webp';
 
 export const siteData = {
@@ -27,13 +30,12 @@ export const footerData = {
     name: 'Thet Aung',
     copyright: `© ${new Date().getFullYear()}. Crafted with code and creativity.`,
     socialLinks: [
-        { icon: 'fab fa-github', href: GITHUB_URL, hoverColor: 'slate' },
+        { icon: Github, href: GITHUB_URL, hoverColor: 'slate' },
         {
-            icon: 'fab fa-linkedin',
+            icon: Linkedin,
             href: LINKEDIN_URL,
             hoverColor: 'blue',
         },
-        // { icon: 'fab fa-stack-overflow', href: '#', hoverColor: 'orange' },
-        { icon: 'far fa-envelope', href: 'mailto:thetaung.dev@gmail.com', hoverColor: 'red' },
+        { icon: Envelope, href: 'mailto:thetaung.dev@gmail.com', hoverColor: 'red' },
     ],
 };

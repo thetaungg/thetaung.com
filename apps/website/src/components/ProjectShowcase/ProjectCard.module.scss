@@ -197,13 +197,13 @@
     text-decoration: none;
     transition: all 0.3s ease;
 
-    :global(.material-symbols-outlined),
-    i {
-        font-size: 1.8rem;
+    :global(svg) {
+        width: 1.8rem;
+        height: 1.8rem;
         transition: transform 0.3s ease;
     }
 
-    &:hover :global(.material-symbols-outlined) {
+    &:hover :global(svg) {
         transform: translateX(4px);
     }
 }

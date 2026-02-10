@@ -17,8 +17,8 @@ import { footerData } from '../data/site';
                     <a
                         href={link.href}
                         class={`footer__social-link footer__social-link--${link.hoverColor}`}
-                        aria-label={link.icon.split(' ').pop()}>
-                        <i class={link.icon} />
+                        aria-label={link.icon}>
+                        <Fragment set:html={link.icon} />
                     </a>
                 ))
             }
@@ -69,7 +69,7 @@ import { footerData } from '../data/site';
 
     .footer__copyright {
         font-size: 1.2rem;
-        color: var(--text-muted);
+        color: var(--color-slate-500);
         margin-top: 0.4rem;
     }
 
@@ -80,12 +80,16 @@ import { footerData } from '../data/site';
     }
 
     .footer__social-link {
-        color: var(--text-muted);
+        color: var(--color-slate-500);
         text-decoration: none;
         transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        i {
-            font-size: 2.4rem;
+        :global(svg) {
+            width: 2.4rem;
+            height: 2.4rem;
         }
 
         &:hover {
@@ -98,7 +102,7 @@ import { footerData } from '../data/site';
     }
 
     .footer__social-link--blue:hover {
-        color: var(--accent-primary);
+        color: #0077b5;
     }
 
     .footer__social-link--orange:hover {

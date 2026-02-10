@@ -1,11 +1,12 @@
 {
   "plugins": ["prettier-plugin-astro"],
   "bracketSpacing": true,
-  "jsxBracketSameLine": true,
+  "bracketSameLine": true,
   "tabWidth": 4,
   "printWidth": 100,
   "singleQuote": true,
   "jsxSingleQuote": false,
   "trailingComma": "all",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "htmlWhitespaceSensitivity": "ignore"
 }

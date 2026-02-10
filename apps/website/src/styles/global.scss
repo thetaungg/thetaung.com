@@ -130,7 +130,7 @@
     --navbar-bg: rgba(var(--color-white-rgb), 0.8);
     --navbar-border: rgba(var(--color-slate-200-rgb), 0.6);
     --navbar-text: var(--color-slate-800);
-    --navbar-link: var(--color-slate-500);
+    --navbar-link: var(--color-slate-600);
     --navbar-link-hover: var(--color-slate-900);
     --navbar-link-hover-bg: var(--color-slate-50);
 
@@ -448,6 +448,10 @@ a {
 
 strong {
     font-weight: 600;
+}
+
+svg {
+    display: block;
 }
 
 /* ===========================================

@@ -1,3 +1,19 @@
+import ArrowForwardIcon from '@/assets/icons/arrow-forward.svg?raw';
+import BrushIcon from '@/assets/icons/brush.svg?raw';
+import DashboardCustomizeIcon from '@/assets/icons/dashboard-customize.svg?raw';
+import ExploreIcon from '@/assets/icons/explore.svg?raw';
+import GithubIcon from '@/assets/icons/github.svg?raw';
+import OpenInNewIcon from '@/assets/icons/open-in-new.svg?raw';
+// import PaletteIcon from '@/assets/icons/palette.svg?raw';
+import PlayCircleIcon from '@/assets/icons/play-circle.svg?raw';
+// import PsychologyIcon from '@/assets/icons/psychology.svg?raw';
+// import QuizIcon from '@/assets/icons/quiz.svg?raw';
+import ScienceIcon from '@/assets/icons/science.svg?raw';
+// import SearchIcon from '@/assets/icons/search.svg?raw';
+import SpeedIcon from '@/assets/icons/speed.svg?raw';
+import TableChartIcon from '@/assets/icons/table-chart.svg?raw';
+import TuneIcon from '@/assets/icons/tune.svg?raw';
+import VideocamIcon from '@/assets/icons/videocam.svg?raw';
 import ButlerAppWebsiteImage from '@/assets/showcase/butlerapp/landing-hero.webp';
 import MoleculesComponentsImage from '@/assets/showcase/molecules/molecules-components.webp';
 import SayaLandingImage from '@/assets/showcase/saya/landing-1.webp';
@@ -54,34 +70,34 @@ export const projects: Project[] = [
         I decided to use Next.js; Nextjs 12 was the latest version at the time and it was a great framework back then. Now, I wouldn't recommend it for new projects.`,
         features: [
             {
-                icon: 'play_circle',
+                icon: PlayCircleIcon,
                 title: 'Course Viewer',
                 description:
                     'Interactive course viewer with video player, progress tracking, bookmarks, quizzes, and more.',
             },
             {
-                icon: 'videocam',
+                icon: VideocamIcon,
                 title: 'Zoom Integration',
                 description:
                     'Zoom SDK integration for live classes. Implemented with the help of nextjs API routes.',
             },
-            {
-                icon: 'quiz',
-                title: 'Practice Test',
-                description:
-                    'Interactive quizzes and assessments with instant feedback, progress tracking, fun ui, and adaptive difficulty levels.',
-            },
-            {
-                icon: 'speed',
-                title: 'Performance & SEO',
-                description: 'Achieved great performance and SEO.',
-            },
+            // {
+            //     icon: QuizIcon,
+            //     title: 'Practice Test',
+            //     description:
+            //         'Interactive quizzes and assessments with instant feedback, progress tracking, fun ui, and adaptive difficulty levels.',
+            // },
+            // {
+            //     icon: SpeedIcon,
+            //     title: 'Performance & SEO',
+            //     description: 'Achieved great performance and SEO.',
+            // },
         ],
         cta: {
             primary: {
                 label: 'Visit Website',
                 href: 'https://saya.education',
-                icon: 'open_in_new',
+                icon: OpenInNewIcon,
             },
             // secondary: { label: 'Read Case Study', href: '#', icon: 'description' },
         },
@@ -105,40 +121,40 @@ export const projects: Project[] = [
         And I'm still actively working on it to publish it. I genuinely believe that this is the best react native ui library out there.`,
         features: [
             {
-                icon: 'tune',
+                icon: TuneIcon,
                 title: 'Customizability',
                 description:
                     'Highly customizable and replacable components with extensive theming options, variant props, and style overrides, etc.',
             },
             {
-                icon: 'brush',
+                icon: BrushIcon,
                 title: 'Unistyles',
                 description:
                     'Built with Unistyles for type-safe, high performant styling with dynamic themes and cool web features.',
             },
-            {
-                icon: 'palette',
-                title: 'M3 Expressive',
-                description:
-                    'Implements Material Design 3 Expressive design system with dynamic color schemes and modern UI patterns.',
-            },
-            {
-                icon: 'speed',
-                title: 'Performance',
-                description:
-                    'Optimized for 60fps animations with native feel, minimal re-renders, and efficient component architecture.',
-            },
+            // {
+            //     icon: PaletteIcon,
+            //     title: 'M3 Expressive',
+            //     description:
+            //         'Implements Material Design 3 Expressive design system with dynamic color schemes and modern UI patterns.',
+            // },
+            // {
+            //     icon: SpeedIcon,
+            //     title: 'Performance',
+            //     description:
+            //         'Optimized for 60fps animations with native feel, minimal re-renders, and efficient component architecture.',
+            // },
         ],
         cta: {
             primary: {
                 label: 'Visit Docs Site',
                 href: 'https://molecules.taylordb.ai',
-                icon: 'arrow_forward',
+                icon: ArrowForwardIcon,
             },
             secondary: {
                 label: 'View Code',
                 href: 'https://github.com/webbeetechnologies/react-native-molecules',
-                icon: 'fab fa-github',
+                icon: GithubIcon,
             },
         },
     },
@@ -162,37 +178,37 @@ export const projects: Project[] = [
         `,
         features: [
             {
-                icon: 'dashboard_customize',
+                icon: DashboardCustomizeIcon,
                 title: 'CRM Builder',
                 description:
                     'App builder that empowers customers to create custom CRMs using pre-built templates and AI-powered customization.',
             },
             {
-                icon: 'table_chart',
+                icon: TableChartIcon,
                 title: 'Datagrid',
                 description:
                     'Canvas-based 60fps performant table implementation that handles large datasets with smooth scrolling and interactions.',
             },
-            {
-                icon: 'psychology',
-                title: 'AI Agent',
-                description:
-                    'Intelligent agent that helps customers customize and tailor the CRM to fit their specific business needs.',
-            },
-            {
-                icon: 'speed',
-                title: 'Performance',
-                description:
-                    'Optimized rendering pipeline with virtualization, efficient state management, and lazy loading for instant responsiveness.',
-            },
+            // {
+            //     icon: PsychologyIcon,
+            //     title: 'AI Agent',
+            //     description:
+            //         'Intelligent agent that helps customers customize and tailor the CRM to fit their specific business needs.',
+            // },
+            // {
+            //     icon: SpeedIcon,
+            //     title: 'Performance',
+            //     description:
+            //         'Optimized rendering pipeline with virtualization, efficient state management, and lazy loading for instant responsiveness.',
+            // },
         ],
         cta: {
             primary: {
                 label: 'Visit Website',
                 href: 'https://taylordb.ai/signup',
-                icon: 'explore',
+                icon: ExploreIcon,
             },
-            // secondary: { label: 'View Code', href: '#', icon: 'fab fa-github' },
+            // secondary: { label: 'View Code', href: '#', icon: 'github' },
         },
     },
     {
@@ -212,30 +228,30 @@ export const projects: Project[] = [
         `,
         features: [
             {
-                icon: 'speed',
+                icon: SpeedIcon,
                 title: 'Performance',
                 description: 'Achieved under 1 sec for the first contentful paint',
             },
             {
-                icon: 'science',
+                icon: ScienceIcon,
                 title: 'Split Testing',
                 description:
                     'Achitected a custom scalable and predictable split testing flow with git, nginx and lua.',
             },
-            {
-                icon: 'search',
-                title: 'SEO',
-                description:
-                    'Structured data, meta-tag management, and server-side rendering to maximize organic search visibility.',
-            },
+            // {
+            //     icon: SearchIcon,
+            //     title: 'SEO',
+            //     description:
+            //         'Structured data, meta-tag management, and server-side rendering to maximize organic search visibility.',
+            // },
         ],
         cta: {
             primary: {
                 label: 'Visit Website',
                 href: 'https://butlerapp.de',
-                icon: 'explore',
+                icon: ExploreIcon,
             },
-            // secondary: { label: 'Read Case Study', href: '#', icon: 'fab fa-github' },
+            // secondary: { label: 'Read Case Study', href: '#', icon: 'github' },
         },
     },
 ];

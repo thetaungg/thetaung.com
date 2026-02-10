@@ -1,6 +1,9 @@
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from '@google-recaptcha/react';
 import { useCallback, useState } from 'react';
 
+import ArrowForwardIcon from '@/assets/icons/arrow-forward.svg?react';
+import CheckCircleIcon from '@/assets/icons/check-circle.svg?react';
+import ErrorIcon from '@/assets/icons/error.svg?react';
 import { contactData } from '@/data/contact';
 import { API_BASE_URL, GOOGLE_RECAPTCHA_SITE_KEY } from '@/utils/constants';
 
@@ -134,9 +137,7 @@ const ContactForm = () => {
 
             {statusMessage && (
                 <div className={status === 'success' ? styles.statusSuccess : styles.statusError}>
-                    <span className="material-symbols-outlined">
-                        {status === 'success' ? 'check_circle' : 'error'}
-                    </span>
+                    {status === 'success' ? <CheckCircleIcon /> : <ErrorIcon />}
                     {statusMessage}
                 </div>
             )}
@@ -151,7 +152,7 @@ const ContactForm = () => {
                     ) : (
                         <>
                             {contactData.form.submitLabel}
-                            <span className="material-symbols-outlined">arrow_forward</span>
+                            <ArrowForwardIcon />
                         </>
                     )}
                 </button>

@@ -17,7 +17,7 @@ const { features } = Astro.props;
         features.map(feature => (
             <div class="feature-grid__item">
                 <div class="feature-grid__icon">
-                    <span class="material-symbols-outlined">{feature.icon}</span>
+                    <Fragment set:html={feature.icon} />
                 </div>
                 <div class="feature-grid__content">
                     <h3 class="feature-grid__title">{feature.title}</h3>
@@ -63,8 +63,9 @@ const { features } = Astro.props;
         box-shadow: var(--shadow-sm);
     }
 
-    .feature-grid__icon .material-symbols-outlined {
-        font-size: 2rem;
+    .feature-grid__icon :global(svg) {
+        width: 2rem;
+        height: 2rem;
     }
 
     .feature-grid__title {

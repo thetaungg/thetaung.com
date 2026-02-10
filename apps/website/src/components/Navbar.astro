@@ -1,5 +1,7 @@
 ---
 import { siteData, navLinks } from '../data/site';
+import MenuIcon from '@/assets/icons/menu.svg?raw';
+import CloseIcon from '@/assets/icons/close.svg?raw';
 ---
 
 <nav class="navbar" id="navbar">
@@ -26,8 +28,8 @@ import { siteData, navLinks } from '../data/site';
             aria-label="Toggle menu"
             aria-expanded="false"
         >
-            <span class="material-symbols-outlined navbar__icon--menu">menu</span>
-            <span class="material-symbols-outlined navbar__icon--close">close</span>
+            <span class="navbar__icon--menu"><Fragment set:html={MenuIcon} /></span>
+            <span class="navbar__icon--close"><Fragment set:html={CloseIcon} /></span>
         </button>
     </div>
 </nav>
@@ -154,8 +156,9 @@ import { siteData, navLinks } from '../data/site';
             background: var(--bg-tertiary);
         }
 
-        .material-symbols-outlined {
-            font-size: 2rem;
+        :global(svg) {
+            width: 2rem;
+            height: 2rem;
         }
 
         .navbar__icon--close {

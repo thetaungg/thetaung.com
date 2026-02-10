@@ -1,5 +1,7 @@
 import { type CSSProperties, useMemo } from 'react';
 
+import ArrowForwardIcon from '@/assets/icons/arrow-forward.svg?react';
+
 import type { Project } from '../../data/projects';
 import { deriveCardColors } from '../../utils/deriveCardColors';
 import styles from './ProjectCard.module.scss';
@@ -58,9 +60,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                             key={feature.title}
                             className={styles.slideFeature}
                             title={feature.description}>
-                            <span className={`material-symbols-outlined ${styles.featureIcon}`}>
-                                {feature.icon}
-                            </span>
+                            <span
+                                className={styles.featureIcon}
+                                dangerouslySetInnerHTML={{ __html: feature.icon }}
+                            />
                             <span className={styles.featureTitle}>{feature.title}</span>
                         </div>
                     ))}
@@ -71,20 +74,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                         href={`/showcase/${project.id}`}
                         className={`${styles.slideBtn} ${styles.slideBtnPrimary}`}>
                         {project.cta.primary.label}
-                        <span className="material-symbols-outlined">arrow_forward</span>
+                        <ArrowForwardIcon />
                     </a>
                     {project.cta.secondary && (
                         <a
                             href={project.cta.secondary.href}
                             className={`${styles.slideBtn} ${styles.slideBtnSecondary}`}>
                             {project.cta.secondary.label}
-                            {project.cta.secondary.icon.startsWith('fab') ? (
-                                <i className={project.cta.secondary.icon} />
-                            ) : (
-                                <span className="material-symbols-outlined">
-                                    {project.cta.secondary.icon}
-                                </span>
-                            )}
+                            {
+                                <span
+                                    className={styles.svgIcon}
+                                    dangerouslySetInnerHTML={{
+                                        __html: project.cta.secondary.icon,
+                                    }}
+                                />
+                            }
                         </a>
                     )}
                 </div>
