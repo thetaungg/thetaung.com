@@ -24,8 +24,5 @@
         "react": "^19.2.3",
         "react-dom": "^19.2.3",
         "sass": "^1.97.1"
-    },
-    "devDependencies": {
-        "wrangler": "^4"
     }
 }
