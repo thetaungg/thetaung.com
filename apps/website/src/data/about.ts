@@ -1,4 +1,4 @@
-import ComputerIllustration from '../assets/computer-illu.png';
+import ComputerIllustration from '../assets/computer-illu.webp';
 
 export const aboutData = {
     title: 'A bit about me',

@@ -20,7 +20,12 @@ import { siteData, navLinks } from '../data/site';
     </div>
 
     <div class="navbar__mobile-toggle">
-        <button class="navbar__toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <button
+            class="navbar__toggle"
+            id="navbar-toggle"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+        >
             <span class="material-symbols-outlined navbar__icon--menu">menu</span>
             <span class="material-symbols-outlined navbar__icon--close">close</span>
         </button>
@@ -182,7 +187,9 @@ import { siteData, navLinks } from '../data/site';
         background: var(--bg-primary);
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
 
         @media (min-width: 768px) {
             display: none;
@@ -252,7 +259,7 @@ import { siteData, navLinks } from '../data/site';
         document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    mobileMenu?.addEventListener('click', (e) => {
+    mobileMenu?.addEventListener('click', e => {
         const target = e.target as HTMLElement;
         if (target.closest('a')) {
             closeMobileMenu();

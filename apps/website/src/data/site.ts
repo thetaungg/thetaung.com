@@ -1,4 +1,4 @@
-import Me from '../assets/me.png';
+import Me from '../assets/me.webp';
 
 export const siteData = {
     title: 'Thet Aung - Senior Software Engineer',
