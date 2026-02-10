@@ -5,10 +5,10 @@ import CloseIcon from '@/assets/icons/close.svg?raw';
 ---
 
 <nav class="navbar" id="navbar">
-    <div class="navbar__left">
+    <a class="navbar__left" href="/">
         <img src={siteData.avatar} alt={siteData.author} class="navbar__avatar" />
         <span class="navbar__name">{siteData.author}</span>
-    </div>
+    </a>
 
     <div class="navbar__center">
         {
@@ -26,8 +26,7 @@ import CloseIcon from '@/assets/icons/close.svg?raw';
             class="navbar__toggle"
             id="navbar-toggle"
             aria-label="Toggle menu"
-            aria-expanded="false"
-        >
+            aria-expanded="false">
             <span class="navbar__icon--menu"><Fragment set:html={MenuIcon} /></span>
             <span class="navbar__icon--close"><Fragment set:html={CloseIcon} /></span>
         </button>
