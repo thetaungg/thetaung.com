@@ -1,0 +1,125 @@
+---
+import { siteData } from '../data/site';
+import { GITHUB_URL, LINKEDIN_URL, CURRENT_COMPANY } from '../data/site';
+import '../styles/global.scss';
+
+export interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    type?: 'website' | 'article';
+    canonical?: string;
+    noindex?: boolean;
+}
+
+const {
+    title = siteData.title,
+    description = siteData.description,
+    image = '/og-image.png',
+    type = 'website',
+    canonical = Astro.url.href,
+    noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site || Astro.url.origin;
+const ogImage = new URL(image, siteUrl).href;
+
+// Structured Data - Person & Website
+const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Person',
+            '@id': `${siteUrl}/#person`,
+            name: siteData.author,
+            url: siteUrl,
+            image: {
+                '@type': 'ImageObject',
+                url: new URL(siteData.avatar, siteUrl).href,
+            },
+            jobTitle: 'Senior Software Engineer',
+            worksFor: {
+                '@type': 'Organization',
+                name: CURRENT_COMPANY.name,
+                url: CURRENT_COMPANY.url,
+            },
+            sameAs: [GITHUB_URL, LINKEDIN_URL],
+        },
+        {
+            '@type': 'WebSite',
+            '@id': `${siteUrl}/#website`,
+            url: siteUrl,
+            name: siteData.title,
+            description: siteData.description,
+            author: {
+                '@id': `${siteUrl}/#person`,
+            },
+        },
+    ],
+};
+---
+
+<script>
+    import { initAllAnimations } from '../scripts/gsap-animations';
+    initAllAnimations();
+</script>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="canonical" href={canonical} />
+        <meta name="generator" content={Astro.generator} />
+
+        <!-- Primary Meta Tags -->
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta name="author" content={siteData.author} />
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:site_name" content={siteData.title} />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonical} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+
+        <!-- Additional head content (slot for page-specific meta/scripts) -->
+        <slot name="head" />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Icons -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>

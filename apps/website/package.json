@@ -1,0 +1,29 @@
+{
+    "name": "@thetaung/website",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^4.3.13",
+        "@astrojs/react": "^4.4.2",
+        "@astrojs/sitemap": "^3.7.0",
+        "@google-recaptcha/react": "^2.4.0",
+        "@tsparticles/engine": "^3.9.1",
+        "@tsparticles/react": "^3.0.0",
+        "@tsparticles/slim": "^3.9.1",
+        "@types/react": "^19.2.7",
+        "@types/react-dom": "^19.2.3",
+        "astro": "^5.16.6",
+        "colord": "^2.9.3",
+        "gsap": "^3.14.2",
+        "react": "^19.2.3",
+        "react-dom": "^19.2.3",
+        "sass": "^1.97.1"
+    },
+    "devDependencies": {}
+}

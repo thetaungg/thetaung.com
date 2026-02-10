@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thet Aung - MERNStack Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    border: "hsl(var(--border))",
+                    input: "hsl(var(--input))",
+                    ring: "hsl(var(--ring))",
+                    background: "#FFFFFF",
+                    foreground: "#171717",
+                    primary: {
+                        DEFAULT: "#2563EB",
+                        foreground: "#FFFFFF",
+                    },
+                    secondary: {
+                        DEFAULT: "#F8FAFC",
+                        foreground: "#1E293B",
+                    },
+                    muted: {
+                        DEFAULT: "#F1F5F9",
+                        foreground: "#64748B",
+                    },
+                    accent: {
+                        DEFAULT: "#F8FAFC",
+                        foreground: "#0F172A",
+                    },
+                },
+                fontFamily: {
+                    sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    display: ['Plus Jakarta Sans', 'sans-serif'],
+                },
+                backgroundImage: {
+                    'gradient-subtle': 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(37,99,235,0.03) 100%)',
+                },
+                animation: {
+                    'float-slow': 'float 7s ease-in-out infinite',
+                    'float-medium': 'float 5s ease-in-out infinite',
+                    'float-fast': 'float 4s ease-in-out infinite',
+                },
+                keyframes: {
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(-15px)' },
+                    }
+                }
+            },
+        },
+    };
+</script>
+<style type="text/tailwindcss">
+    @layer base {
+        :root {
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 221.2 83.2% 53.3%;
+        }
+        body {
+            @apply bg-background text-foreground antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-display tracking-tight text-foreground;
+        }
+    }
+</style>
+</head>
+<body class="bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-4">
+<div class="bg-white/80 backdrop-blur-xl border border-slate-200/60 shadow-sm rounded-full px-6 py-3 flex items-center justify-between gap-8 max-w-5xl w-full transition-all">
+<div class="flex items-center gap-3">
+<img alt="Thet Aung Avatar" class="h-8 w-8 rounded-full object-cover ring-2 ring-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3xwUNS-Y7HTrONZqi3HRvGqZ-JnpqjZsmZkRz24gMaHpkgDv61cdklq6tiKZn-gffxGizxT35EqnxapdHQQl-NpFu2lpiMKtBthqyjH2B5oVlv_fiYqbaEiSkF6lWOwfxysq1g9w38i_RfB0Wa0cTdvPU0c9-qmjolQErYOFqoyAeHysahD68HjbMAqse7BihmmgCLnKoL5PLoW3os3WzHoRGzIVI7ILS3g_SW8KSC-eGOenkxn-WKdme_QN6ebgZebPM15Kv760"/>
+<span class="font-semibold text-sm text-slate-800 tracking-tight">Thet Aung</span>
+</div>
+<div class="hidden md:flex items-center gap-1">
+<a class="px-4 py-2 rounded-full text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-all" href="#about">About</a>
+<a class="px-4 py-2 rounded-full text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-all" href="#skills">Skills</a>
+<a class="px-4 py-2 rounded-full text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-all" href="#experience">Experience</a>
+<a class="px-4 py-2 rounded-full text-xs font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-all" href="#showcase">Work</a>
+<a class="ml-2 px-5 py-2.5 rounded-full bg-slate-900 text-white font-medium text-xs hover:bg-blue-600 transition-all shadow-lg shadow-slate-900/10" href="#contact">Contact</a>
+</div>
+<div class="md:hidden">
+<button class="p-2 text-slate-600 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined text-xl">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<section class="relative pt-40 pb-20 lg:pt-52 lg:pb-32 overflow-hidden bg-gradient-subtle">
+<div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="flex flex-col items-center text-center space-y-10 z-10">
+<div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-slate-600 text-[11px] font-bold uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Open to new opportunities
+            </div>
+<h1 class="font-medium text-6xl sm:text-7xl lg:text-8xl tracking-tighter text-slate-900 text-balance leading-[1.05] max-w-5xl">
+                Building digital <br class="hidden sm:block"/>
+<span class="text-slate-400">experiences that matter.</span>
+</h1>
+<p class="text-lg sm:text-xl text-slate-500 font-normal max-w-2xl leading-relaxed text-balance">
+                I'm Thet, a <span class="text-slate-900 font-medium">MERN Stack Developer</span> crafting scalable, human-centric web applications with clean code and thoughtful design.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-6 w-full sm:w-auto">
+<a class="group relative px-8 py-4 bg-slate-900 text-white rounded-full font-medium text-sm overflow-hidden transition-all hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-600/20 hover:-translate-y-0.5" href="#showcase">
+                    View Showcase
+                </a>
+<a class="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-full font-medium text-sm hover:bg-slate-50 hover:border-slate-300 transition-colors" href="#contact">
+                    Get in touch
+                </a>
+</div>
+<div class="mt-20 sm:mt-28 relative w-full max-w-5xl mx-auto">
+<div class="relative aspect-[16/9] md:aspect-[21/9] w-full rounded-3xl overflow-hidden bg-slate-50 shadow-2xl shadow-slate-200/50 border border-slate-100">
+<img alt="Developer workspace illustration" class="w-full h-full object-cover object-center opacity-90 hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqxVXa4svFKiCqQX5hvAznqzpxJXdfFbVw-iP5EUKj4vXCSTJKSDBS9dkfC6t1_QwRrnLn0s5Ie4jhv3Ny5a2mJyjM9b1UGQhaQyAlIU0sBsyt098sMN6vuXsWPj0_cJW3QQ1cFjafzcuXZc7s_vVNB7KPOVvYY81PjFiHLNHT54q2eXWYhgMollw6w-l-GcIMmmsb7p4tCkcQ4nVPGmC_Qvt3cgpuwqfHpJC2XYaHtLj9_gPRxHVTSOrWhir9G8raQ90V_emJSIw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white" id="about">
+<div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="bg-slate-50 rounded-[2.5rem] p-12 relative overflow-hidden border border-slate-100">
+<img alt="Abstract shapes illustration" class="w-full h-auto object-contain relative z-10 mix-blend-darken opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7j51agWObGOt6mm76I9wHP8cDnTnX6Z8DBMvuqIJqlcjse-3aYtyjB16J2B80wSBGphXA0aGGmrvAcvs1H797O-GyiYBVMiOvdUVVmlPKPY9yeTMIHBDRcLEc2od0I86-lIu-hYUlQkdfEVA2rd_Vflx-yr-_VBZYqWYFIKja46tKe6_ripcqF_K1sLOyK2xxQXsA0EDNU-vdMbVIIZqrvO9OYtlFCmUu0OfvTo0rnhgLupY7JDHXoT0nzhYc7DgVi7aTIk2WutQ"/>
+</div>
+</div>
+<div class="order-1 lg:order-2 space-y-8">
+<div>
+<h2 class="text-3xl lg:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">Design-led engineering.</h2>
+</div>
+<div class="space-y-6 text-lg text-slate-600 leading-relaxed font-light">
+<p>
+                        My journey began at 16 with Java, but the dynamic web world pulled me into JavaScript in 2019. Within six months, I landed my first role, quickly evolving into a <strong>Frontend Lead</strong>.
+                    </p>
+<p>
+                        Today, I balance remote work for a Singapore-based tech firm—architecting Web &amp; Mobile solutions—with selective freelance projects that challenge my creativity.
+                    </p>
+<div class="pt-6">
+<div class="pl-6 border-l-2 border-blue-500">
+<p class="text-slate-800 font-medium italic text-base">
+                                "My proudest achievement? Building <a class="underline decoration-1 underline-offset-4 decoration-blue-500 hover:text-blue-600 transition-colors" href="#">Saya - the English Learning Platform</a>."
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 border-t border-slate-100 overflow-hidden relative" id="skills">
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl mix-blend-multiply opacity-70 animate-float-slow"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-100/40 rounded-full blur-3xl mix-blend-multiply opacity-70 animate-float-medium" style="animation-delay: 2s;"></div>
+<div class="absolute top-3/4 left-1/3 w-[300px] h-[300px] bg-emerald-100/40 rounded-full blur-3xl mix-blend-multiply opacity-70 animate-float-fast" style="animation-delay: 1s;"></div>
+</div>
+<div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+<div class="mb-16 text-center">
+<h2 class="text-3xl lg:text-4xl font-semibold text-slate-900 tracking-tight mb-4">Skills &amp; Technologies</h2>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto font-light">
+                An expanding universe of tools and technologies I leverage to build robust, scalable applications.
+            </p>
+</div>
+<div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 lg:gap-14 py-8 max-w-5xl mx-auto">
+<div class="group relative flex flex-col items-center animate-float-slow mt-8 sm:mt-12">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white shadow-xl shadow-blue-100/50 border border-blue-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-blue-200 group-hover:border-blue-200">
+<i class="fab fa-react text-4xl md:text-6xl text-blue-500 group-hover:rotate-[360deg] transition-transform duration-700"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">React</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mt-0 sm:mt-4">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-blue-100/50 border border-blue-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-blue-200 group-hover:border-blue-200">
+<i class="fab fa-docker text-2xl md:text-3xl text-blue-500"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Docker</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-medium mb-8 sm:mb-16">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white shadow-xl shadow-green-100/50 border border-green-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-green-200 group-hover:border-green-200">
+<i class="fab fa-node text-4xl md:text-5xl text-green-600"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Node.js</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mt-6 sm:mt-10">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-orange-100/50 border border-orange-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-orange-200 group-hover:border-orange-200">
+<i class="fab fa-git-alt text-2xl md:text-3xl text-orange-600"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Git</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-slow mt-12 sm:mt-20">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white shadow-xl shadow-purple-100/50 border border-purple-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-purple-200 group-hover:border-purple-200">
+<span class="material-symbols-outlined text-4xl md:text-6xl text-purple-600">code_blocks</span>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Next.js</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mb-4 sm:mb-8">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-pink-100/50 border border-pink-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-pink-200 group-hover:border-pink-200">
+<i class="fab fa-figma text-2xl md:text-3xl text-pink-500"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Figma</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-medium mt-4 sm:mt-0">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl shadow-emerald-100/50 border border-emerald-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-emerald-200 group-hover:border-emerald-200">
+<span class="material-symbols-outlined text-3xl md:text-5xl text-emerald-600">database</span>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">MongoDB</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mt-10 sm:mt-16">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-amber-100/50 border border-amber-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-amber-200 group-hover:border-amber-200">
+<i class="fas fa-fire text-2xl md:text-3xl text-amber-500"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Firebase</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-slow mb-8 sm:mb-12">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl shadow-cyan-100/50 border border-cyan-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-cyan-200 group-hover:border-cyan-200">
+<i class="fab fa-css3-alt text-3xl md:text-5xl text-cyan-500"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Tailwind CSS</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mt-2 sm:mt-6">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-blue-100/50 border border-blue-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-blue-200 group-hover:border-blue-200">
+<i class="fas fa-database text-2xl md:text-3xl text-blue-600"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">PostgreSQL</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-medium mt-12 sm:mt-20">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl shadow-yellow-100/50 border border-yellow-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-yellow-200 group-hover:border-yellow-200">
+<i class="fab fa-js text-3xl md:text-5xl text-yellow-500"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">JavaScript</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mb-6 sm:mb-10">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-orange-100/50 border border-orange-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-orange-200 group-hover:border-orange-200">
+<i class="fab fa-html5 text-2xl md:text-3xl text-orange-600"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">HTML5</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-slow mt-4 sm:mt-0">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl shadow-blue-100/50 border border-blue-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-blue-200 group-hover:border-blue-200">
+<span class="font-bold text-xl md:text-3xl text-blue-600">TS</span>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">TypeScript</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mt-10 sm:mt-14">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-pink-100/50 border border-pink-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-pink-200 group-hover:border-pink-200">
+<i class="fab fa-sass text-2xl md:text-3xl text-pink-500"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">Sass</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-medium mb-10 sm:mb-16">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl shadow-orange-100/50 border border-orange-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-orange-200 group-hover:border-orange-200">
+<i class="fab fa-aws text-3xl md:text-4xl text-orange-500"></i>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">AWS</span>
+</div>
+<div class="group relative flex flex-col items-center animate-float-fast mt-4 sm:mt-8">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg shadow-pink-100/50 border border-pink-50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-pink-200 group-hover:border-pink-200">
+<span class="material-symbols-outlined text-2xl md:text-3xl text-pink-500">hub</span>
+</div>
+<span class="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-slate-900 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap z-20">GraphQL</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white" id="experience">
+<div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="grid lg:grid-cols-12 gap-12">
+<div class="lg:col-span-4">
+<h2 class="text-3xl lg:text-4xl font-semibold text-slate-900 tracking-tight mb-6">Experience &amp;<br/>Education</h2>
+<p class="text-slate-500 font-light text-lg">A chronological overview of my professional journey and academic background.</p>
+</div>
+<div class="lg:col-span-8">
+<div class="relative pl-8 space-y-12 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100">
+<div class="relative">
+<div class="absolute -left-[29px] top-1.5 h-4 w-4 rounded-full border-[3px] border-white bg-blue-600 shadow-md"></div>
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+<h3 class="text-xl font-bold text-slate-900">Senior Frontend Developer</h3>
+<span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2023 — Present</span>
+</div>
+<p class="text-sm text-blue-600 font-medium mb-3">TechCorp Singapore (Remote)</p>
+<p class="text-slate-600 leading-relaxed">Leading the frontend architecture for the company's flagship SaaS product. Migrated legacy codebase to Next.js, improving load times by 40%. Mentoring junior developers and establishing code quality standards.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1.5 h-4 w-4 rounded-full border-[3px] border-white bg-slate-300"></div>
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+<h3 class="text-xl font-bold text-slate-900">Full Stack Developer</h3>
+<span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2021 — 2023</span>
+</div>
+<p class="text-sm text-blue-600 font-medium mb-3">Freelance &amp; Contract</p>
+<p class="text-slate-600 leading-relaxed">Delivered over 15 diverse projects ranging from e-commerce platforms to custom CRM solutions. Collaborated with international clients to translate business requirements into technical solutions.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1.5 h-4 w-4 rounded-full border-[3px] border-white bg-slate-300"></div>
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+<h3 class="text-xl font-bold text-slate-900">Junior Web Developer</h3>
+<span class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">2019 — 2021</span>
+</div>
+<p class="text-sm text-blue-600 font-medium mb-3">StartUp Inc.</p>
+<p class="text-slate-600 leading-relaxed">Started as an intern and quickly moved to a full-time role. Developed responsive UI components and integrated third-party APIs using React and Redux.</p>
+</div>
+<div class="relative pt-8 mt-12 border-t border-slate-50">
+<div class="absolute -left-[29px] top-10 h-4 w-4 rounded-full border-[3px] border-white bg-slate-900"></div>
+<h3 class="text-lg font-bold text-slate-900 mb-1">B.Sc. in Computer Science</h3>
+<p class="text-sm text-slate-500">University of Technology, 2015 — 2019</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white border-t border-slate-100" id="showcase">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<span class="text-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">Selected Case Studies</span>
+<h2 class="text-5xl lg:text-7xl font-semibold text-slate-900 tracking-tight mb-8">Recent<br/>Work</h2>
+<p class="text-lg lg:text-xl text-slate-500 leading-relaxed font-light max-w-2xl mx-auto">
+            Deep dives into projects where technical complexity meets intuitive design. Each application represents a challenge solved through the MERN stack.
+        </p>
+</div>
+</section>
+<section class="py-24 bg-slate-50 border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="relative w-full aspect-[16/9] lg:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100 mb-16 lg:mb-24 group">
+<img alt="Portfolio v1 Showcase" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC-ViML9qjhD0x6MP3NZIJNgMucCRgvtymx5W8vUPhSiBvbkDuMneiaJ_qH2n07CPDLscAYjHQBzxw4Glqy1TtDlb9xtUfP5Q0Jm9JeYDF19UNBtjhbdzR_prqiGTfNJeK6B4aHzffWGfp6Kv9RBECfHyNAhZhGfQnWxH5VXoW381M_1-KADL5nklvUqE7gojFZrM42VW_Z8VHi-uO6m-G2msi6rzs0ddyzPV0-WskfQuPpOzQ7mPOv3Ag6KTFQ-iYWRgCcs1bvQ8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8 lg:bottom-12 lg:left-12">
+<span class="bg-white/10 backdrop-blur-md text-white border border-white/20 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 inline-block">Frontend</span>
+</div>
+</div>
+<div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+<div class="lg:col-span-4">
+<div class="lg:sticky lg:top-32 space-y-8">
+<div>
+<h3 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Portfolio v1</h3>
+<p class="text-lg text-slate-500 font-light">Minimalist performance-first personal site.</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-md bg-slate-200/50 text-slate-700 text-xs font-bold uppercase tracking-wider">React</span>
+<span class="px-3 py-1.5 rounded-md bg-slate-200/50 text-slate-700 text-xs font-bold uppercase tracking-wider">Gatsby</span>
+<span class="px-3 py-1.5 rounded-md bg-slate-200/50 text-slate-700 text-xs font-bold uppercase tracking-wider">GraphQL</span>
+</div>
+<div class="flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-slate-900 text-white font-medium hover:bg-blue-600 transition-all shadow-lg shadow-slate-900/10 group" href="#">
+                            Live Demo <span class="material-symbols-outlined ml-2 text-lg group-hover:translate-x-1 transition-transform">open_in_new</span>
+</a>
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-900 font-medium hover:bg-slate-50 transition-all" href="#">
+                            View Code <i class="fab fa-github ml-2.5"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 space-y-12">
+<div class="prose prose-lg text-slate-600 font-light leading-relaxed max-w-none">
+<p class="text-xl text-slate-900 font-medium">
+<strong class="text-slate-900">The Problem:</strong> In a world of heavy client-side apps, I wanted a return to simplicity without losing modern DX. The goal was sub-100ms load times and a perfect Lighthouse score, proving that high interactivity doesn't have to come at the cost of performance.
+                    </p>
+<p>
+<strong class="text-slate-900">The Solution:</strong> Built with Gatsby, the site leverages static site generation (SSG) to deliver pre-rendered HTML. I implemented a custom GraphQL layer to manage content from local Markdown files, creating a seamless CMS-free workflow that lives directly in the git repository.
+                    </p>
+<div class="not-prose my-10 rounded-xl bg-slate-900 p-6 overflow-hidden shadow-xl border border-slate-800">
+<div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+<span class="ml-2 text-xs text-slate-500 font-mono">gatsby-node.js</span>
+</div>
+<pre class="font-mono text-xs sm:text-sm text-slate-300 overflow-x-auto whitespace-pre"><code><span class="text-purple-400">exports</span>.<span class="text-blue-400">createPages</span> = <span class="text-purple-400">async</span> ({ actions, graphql }) =&gt; {
+  <span class="text-purple-400">const</span> { createPage } = actions
+  <span class="text-purple-400">const</span> result = <span class="text-purple-400">await</span> <span class="text-blue-400">graphql</span>(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter { path }
+          }
+        }
+      }
+    }
+  `)
+  <span class="text-slate-500">// Dynamic page generation logic...</span>
+}</code></pre>
+</div>
+<p>
+                        Beyond the build architecture, I focused heavily on asset optimization. Images are processed at build time into modern formats (AVIF, WebP) with blur-up placeholders. The result is a site that feels instantaneous even on 3G networks.
+                    </p>
+</div>
+<div class="grid sm:grid-cols-2 gap-x-8 gap-y-10 pt-10 border-t border-slate-200/60">
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600">speed</span> 
+                            Peak Performance
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Achieved a perfect 100/100 Lighthouse score through aggressive code splitting and asset optimization.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600">image</span> 
+                            Optimized Media
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Automatic generation of WebP formats and blur-up placeholders for a smooth visual loading experience.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600">edit_note</span> 
+                            MDX Integration
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Write content in Markdown with the ability to import and render React components directly within posts.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600">wifi_off</span> 
+                            Offline Support
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Progressive Web App (PWA) capabilities allow the site to be installed and viewed without an internet connection.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="relative w-full aspect-[16/9] lg:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100 mb-16 lg:mb-24 group">
+<img alt="IT Solutions Platform Showcase" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAb3Gz2PW_la0z9jtUs8vQwaXXDEfJ9OZWVAZoKm1oRnCMQ_Lts86-HAniOLtTQN2M7NWqVpr8z5pfyEwd2nxN3lZh9_YclNSYi_369NQqKz9mgxSKUdvF7fILjvVu4zjbq1brNWm0Ebgdmlf1Q8SydDD4CAEensoNMKzPsGBZZMHCFMPQkBVpYtsOQwaMnYlDwji9XYmUMsUu_nYqc6klpk7Wvb9ITtjAcXggcwA3nwL-1HCvJeqclvndY7zzQnhkuJr8OulJofA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8 lg:bottom-12 lg:left-12">
+<span class="bg-white/10 backdrop-blur-md text-white border border-white/20 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 inline-block">Full Stack</span>
+</div>
+</div>
+<div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+<div class="lg:col-span-4">
+<div class="lg:sticky lg:top-32 space-y-8">
+<div>
+<h3 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">IT Solutions Platform</h3>
+<p class="text-lg text-slate-500 font-light">Corporate presence with headless CMS.</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-md bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">Next.js</span>
+<span class="px-3 py-1.5 rounded-md bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">Sanity.io</span>
+<span class="px-3 py-1.5 rounded-md bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">Tailwind</span>
+</div>
+<div class="flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-slate-900 text-white font-medium hover:bg-purple-600 transition-all shadow-lg shadow-slate-900/10 group" href="#">
+                            Visit Site <span class="material-symbols-outlined ml-2 text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-900 font-medium hover:bg-slate-50 transition-all" href="#">
+                            Read Case Study <span class="material-symbols-outlined ml-2 text-lg">description</span>
+</a>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 space-y-12">
+<div class="prose prose-lg text-slate-600 font-light leading-relaxed max-w-none">
+<p class="text-xl text-slate-900 font-medium">
+                        The client, a mid-sized IT Solutions provider, was struggling with a WordPress site that was slow, vulnerable, and hard to maintain. They needed a platform that was visually authoritative but easy for their marketing team to manage.
+                    </p>
+<p>
+                        I architected the solution using <strong>Next.js</strong> for its superior SEO capabilities and server-side rendering. <strong>Sanity.io</strong> was chosen as the headless CMS to provide a real-time, customizable editing environment.
+                    </p>
+<blockquote class="not-prose my-10 pl-6 border-l-4 border-purple-500 italic text-xl text-slate-700 bg-slate-50 py-8 pr-6 rounded-r-xl">
+                        "The new platform didn't just update our look; it completely transformed how we capture leads. The CMS is a joy to use and the speed is incredible."
+                        <footer class="mt-4 text-sm font-bold text-slate-900 not-italic uppercase tracking-widest">— CTO, TechSolutions Inc.</footer>
+</blockquote>
+<p>
+                        The site features a dynamic service catalog where admins can add new offerings, a custom blog with category filtering, and a high-conversion lead generation form that integrates directly with their internal CRM via serverless functions.
+                    </p>
+</div>
+<div class="grid sm:grid-cols-2 gap-x-8 gap-y-10 pt-10 border-t border-slate-200">
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-600">visibility</span> 
+                            Live Content Preview
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Editors can see changes in real-time within the CMS before publishing to production.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-600">category</span> 
+                            Dynamic Routing
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Service pages and blog posts are automatically generated from CMS data, ensuring a scalable site structure.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-600">hub</span> 
+                            CRM Integration
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Custom API route handlers securely transmit form data to the client's CRM, enabling instant lead tracking.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-600">search</span> 
+                            SEO Optimization
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Detailed meta-tag management controlled via the CMS, resulting in a 30% increase in organic traffic.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="relative w-full aspect-[16/9] lg:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100 mb-16 lg:mb-24 group">
+<img alt="Rick &amp; Morty Wiki Showcase" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHkUFsW6vUsGDXU_nVYI2idvHBvXeGA_o82Su-ouCWW1tGX1jgb8UoorpY_1tCn1r0yi5S53FbJxkBd2R9hS2WtPZl2f3EmKyOA_J9VJ-9au4Rn_b29DxXsQZEO6zuLIaGdTe7HbZ_psKJNl5Lt9e7G1eCPJp9ZB7Y_b6yWX9p6a2IkEE9j7toXqMfDfaiFEQJbLnW7frSJ6vzmPcZinGK5YLMyuQdogEmwVOZQOY8eg9SKRtSgu8DKYRQPPUw2MMl-ijiaWY0VXQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8 lg:bottom-12 lg:left-12">
+<span class="bg-white/10 backdrop-blur-md text-white border border-white/20 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 inline-block">Web App</span>
+</div>
+</div>
+<div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+<div class="lg:col-span-4">
+<div class="lg:sticky lg:top-32 space-y-8">
+<div>
+<h3 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Rick &amp; Morty Wiki</h3>
+<p class="text-lg text-slate-500 font-light">Interactive character database.</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-md bg-yellow-50 text-yellow-700 text-xs font-bold uppercase tracking-wider">JavaScript</span>
+<span class="px-3 py-1.5 rounded-md bg-yellow-50 text-yellow-700 text-xs font-bold uppercase tracking-wider">REST API</span>
+<span class="px-3 py-1.5 rounded-md bg-yellow-50 text-yellow-700 text-xs font-bold uppercase tracking-wider">CSS3</span>
+</div>
+<div class="flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-slate-900 text-white font-medium hover:bg-yellow-600 transition-all shadow-lg shadow-slate-900/10 group" href="#">
+                            Explore Wiki <span class="material-symbols-outlined ml-2 text-lg group-hover:translate-x-1 transition-transform">explore</span>
+</a>
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-900 font-medium hover:bg-slate-50 transition-all" href="#">
+                            View Code <i class="fab fa-github ml-2.5"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 space-y-12">
+<div class="prose prose-lg text-slate-600 font-light leading-relaxed max-w-none">
+<p class="text-xl text-slate-900 font-medium">
+                        This project is a deep dive into asynchronous JavaScript and state management. It consumes the public Rick and Morty API to build a rich, interactive wiki. The challenge was to handle complex data relationships without external libraries.
+                    </p>
+<div class="not-prose my-10 rounded-xl bg-white p-6 border border-slate-200 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">webhook</span>
+</div>
+<div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-2 relative z-10">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-wider">useCharacterSearch.js</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">code</span>
+</div>
+<pre class="font-mono text-xs sm:text-sm text-slate-700 overflow-x-auto whitespace-pre relative z-10"><code><span class="text-blue-600">const</span> useCharacterSearch = (query) =&gt; {
+  <span class="text-blue-600">const</span> [results, setResults] = <span class="text-blue-600">useState</span>([]);
+  <span class="text-blue-600">const</span> [loading, setLoading] = <span class="text-blue-600">useState</span>(<span class="text-blue-600">false</span>);
+  <span class="text-blue-600">useEffect</span>(() =&gt; {
+     <span class="text-slate-500">// Debounced API fetch logic to prevent</span>
+     <span class="text-slate-500">// excessive network requests while typing</span>
+     <span class="text-purple-600">fetchCharacters</span>(query).<span class="text-blue-600">then</span>(data =&gt; {
+        setResults(data);
+        setLoading(<span class="text-blue-600">false</span>);
+     });
+  }, [query]);
+  <span class="text-purple-600">return</span> { results, loading };
+};</code></pre>
+</div>
+<p>
+                        The application handles complex data fetching scenarios, including pagination, searching, and filtering by character status, species, and gender. I implemented a custom caching mechanism to minimize network requests for previously visited pages, effectively building a lightweight state management system from scratch.
+                    </p>
+</div>
+<div class="grid sm:grid-cols-2 gap-x-8 gap-y-10 pt-10 border-t border-slate-200/60">
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-600">webhook</span> 
+                            Custom Hooks
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Encapsulated logic for API requests and pagination into reusable custom hooks for cleaner component code.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-600">filter_alt</span> 
+                            Advanced Filtering
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Multi-parameter filtering system that updates the URL query string, allowing users to share specific search results.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-600">grid_view</span> 
+                            Responsive Grid
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">A fluid card layout that adapts gracefully from mobile screens to large desktop monitors using CSS Grid.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-600">account_tree</span> 
+                            Relationship Mapping
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Visualizing character connections by recursively fetching data from linked episode endpoints.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="relative w-full aspect-[16/9] lg:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100 mb-16 lg:mb-24 group">
+<img alt="Node.js API Starter Showcase" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgM_-I0RZ841-Zrx9QdxwpCC-iQwFsSbNoMFlqzuEx5nDBfIxh6WH0EjWBUrlV1XMgeadS2iOaz9p7v1kCb3Qxjn1Dy-ci1R507mR6-NVXy2Z2VPpCf1ZRaVVj7OJn7n-bFm8aIvlPKi0A9SLSptTs4BvOVcQ7mjQIm99o6C3DRZvQKqw6iuad1AVCpfXMOqijgY10q3cIy2jIp4Gn6VoCnd_-AX19VsunJIszmewBWMoUg2Rg0JF3t9VFKxP6uZYbobY-UxTfNA4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8 lg:bottom-12 lg:left-12">
+<span class="bg-white/10 backdrop-blur-md text-white border border-white/20 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 inline-block">Backend</span>
+</div>
+</div>
+<div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+<div class="lg:col-span-4">
+<div class="lg:sticky lg:top-32 space-y-8">
+<div>
+<h3 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Node.js API Starter</h3>
+<p class="text-lg text-slate-500 font-light">Production-ready backend boilerplate.</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-md bg-orange-50 text-orange-700 text-xs font-bold uppercase tracking-wider">Node.js</span>
+<span class="px-3 py-1.5 rounded-md bg-orange-50 text-orange-700 text-xs font-bold uppercase tracking-wider">Express</span>
+<span class="px-3 py-1.5 rounded-md bg-orange-50 text-orange-700 text-xs font-bold uppercase tracking-wider">MongoDB</span>
+</div>
+<div class="flex flex-col gap-3 pt-4">
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-slate-900 text-white font-medium hover:bg-orange-600 transition-all shadow-lg shadow-slate-900/10 group" href="#">
+                            Get Starter <span class="material-symbols-outlined ml-2 text-lg group-hover:translate-y-1 transition-transform">download</span>
+</a>
+<a class="flex items-center justify-center w-full px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-900 font-medium hover:bg-slate-50 transition-all" href="#">
+                            Read Docs <span class="material-symbols-outlined ml-2 text-lg">menu_book</span>
+</a>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 space-y-12">
+<div class="prose prose-lg text-slate-600 font-light leading-relaxed max-w-none">
+<p class="text-xl text-slate-900 font-medium">
+                        This is a robust, production-ready backend boilerplate designed to jumpstart Node.js projects. It solves common setup headaches—authentication, logging, security—by providing a structured, secure foundation out of the box, saving developers hours of configuration time.
+                    </p>
+<div class="not-prose my-10 rounded-xl bg-slate-950 p-6 shadow-2xl border border-slate-900">
+<div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+<div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+<span class="ml-2 text-xs text-slate-500 font-mono">bash</span>
+</div>
+<div class="font-mono text-xs sm:text-sm text-green-400">
+<p class="mb-3"><span class="text-blue-400">➜</span> <span class="text-slate-300">~</span> git clone https://github.com/thetaung/node-starter.git</p>
+<p class="mb-3 text-slate-400">Cloning into 'node-starter'...</p>
+<p class="mb-3"><span class="text-blue-400">➜</span> <span class="text-slate-300">~</span> cd node-starter &amp;&amp; npm install</p>
+<p class="mb-3 text-slate-400">added 84 packages in 2s</p>
+<p class="mb-3"><span class="text-blue-400">➜</span> <span class="text-slate-300">node-starter</span> npm run dev</p>
+<div class="mt-4 p-3 bg-slate-900 rounded border-l-2 border-green-500 text-slate-300">
+                                [info] Server running in development mode on port 5000<br/>
+                                [info] MongoDB Connected: cluster0.mongodb.net
+                            </div>
+</div>
+</div>
+<p>
+                        The architecture adheres to the separation of concerns principle, organizing code into clear layers (routes, controllers, services, models). It comes pre-configured with essential security features like Helmet, CORS, and rate limiting. The starter also includes a robust error handling middleware that standardizes API responses across the application, making frontend integration predictable and smooth.
+                    </p>
+</div>
+<div class="grid sm:grid-cols-2 gap-x-8 gap-y-10 pt-10 border-t border-slate-200">
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-600">lock</span> 
+                            Secure Auth
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Complete JWT authentication flow with refresh tokens, password reset functionality, and email verification.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-600">admin_panel_settings</span> 
+                            RBAC System
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Role-Based Access Control middleware to easily define and restrict access to specific endpoints based on user roles.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-600">integration_instructions</span> 
+                            Auto Documentation
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Integrated Swagger/OpenAPI generation that automatically creates interactive API documentation from code comments.</p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-600">verified</span> 
+                            Data Validation
+                        </h4>
+<p class="text-sm text-slate-500 leading-relaxed">Request validation using Joi/Zod to ensure data integrity before it ever reaches your business logic.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white border-t border-slate-100" id="contact">
+<div class="max-w-4xl mx-auto px-6 sm:px-8">
+<div class="bg-white rounded-[2.5rem] p-8 lg:p-16 border border-slate-200 shadow-2xl shadow-slate-200/30">
+<div class="text-center mb-16">
+<span class="text-blue-600 font-bold tracking-widest uppercase text-[10px] mb-4 block">Get in Touch</span>
+<h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mb-6 tracking-tight">Let's build something <br/><span class="text-blue-600">extraordinary.</span></h2>
+<p class="text-slate-500 text-lg max-w-lg mx-auto font-light">I'm currently available for freelance projects and open to full-time opportunities.</p>
+</div>
+<form class="space-y-10 max-w-xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="group relative">
+<input class="peer w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 placeholder-transparent focus:outline-none focus:border-slate-900 transition-colors" id="name" placeholder="Name" type="text"/>
+<label class="absolute left-0 -top-3.5 text-xs text-slate-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-slate-900" for="name">Name</label>
+</div>
+<div class="group relative">
+<input class="peer w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 placeholder-transparent focus:outline-none focus:border-slate-900 transition-colors" id="email" placeholder="Email" type="email"/>
+<label class="absolute left-0 -top-3.5 text-xs text-slate-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-slate-900" for="email">Email</label>
+</div>
+</div>
+<div class="group relative">
+<textarea class="peer w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 placeholder-transparent focus:outline-none focus:border-slate-900 transition-colors resize-none h-32" id="message" placeholder="Message"></textarea>
+<label class="absolute left-0 -top-3.5 text-xs text-slate-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-slate-900" for="message">Message</label>
+</div>
+<div class="flex flex-col items-center pt-8">
+<button class="px-10 py-4 rounded-full bg-slate-900 text-white font-medium hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-600/20 hover:-translate-y-0.5 transition-all flex items-center gap-3 group w-full sm:w-auto justify-center" type="submit">
+<span>Send Message</span>
+<span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex items-center gap-2 mt-8 opacity-40 grayscale hover:grayscale-0 transition-all">
+<img alt="reCAPTCHA logo" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJX3ZjyFiGSCP3lzosystCp--XgJxzJxL_0YECaoyfRcYTLgj98eyCpfGP95zr0SIi7jmhM8mJRVbmw_KQZYz5_EpHO7awX1BJuRa0KLkd3WMeSxJSV_QvzOrL8Tulp8EIQLY2hZCjAG3ZoECWtB6ZjeZbFwgbRaMc_4RTqb4OFK2291T283xTz8csQXtGm3hrpUnxGBI8_rwkHST6im4p3IIk7JqRLY_JwuSWiLDI3z55EV9V74cQr-CRjAzqyOl6DXatF7zg10I"/>
+<span class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Protected by reCAPTCHA</span>
+</div>
+</div>
+</form>
+</div>
+</div>
+</section>
+<footer class="bg-white py-12 border-t border-slate-100">
+<div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-center md:text-left">
+<h3 class="font-semibold text-lg text-slate-900">Thet Aung</h3>
+<p class="text-xs text-slate-400 mt-1">© 2026. Crafted with code and creativity.</p>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-slate-400 hover:text-slate-900 transition-colors transform hover:scale-110" href="#">
+<i class="fab fa-github text-2xl"></i>
+</a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors transform hover:scale-110" href="#">
+<i class="fab fa-linkedin text-2xl"></i>
+</a>
+<a class="text-slate-400 hover:text-orange-500 transition-colors transform hover:scale-110" href="#">
+<i class="fab fa-stack-overflow text-2xl"></i>
+</a>
+<a class="text-slate-400 hover:text-red-500 transition-colors transform hover:scale-110" href="#">
+<i class="far fa-envelope text-2xl"></i>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

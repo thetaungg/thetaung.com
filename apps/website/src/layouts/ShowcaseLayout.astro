@@ -1,0 +1,900 @@
+---
+import Layout from './Layout.astro';
+import { SectionBadge } from '../components/SectionBadge';
+import FeatureGrid from '../components/showcase/FeatureGrid.astro';
+import { generateProjectJsonLd, generateBreadcrumbJsonLd } from '../utils/seo';
+import type { Project } from '../data/projects';
+import { SITE_URL } from '@/utils/constants';
+
+interface Props {
+    frontmatter: {
+        title: string;
+        subtitle: string;
+        category: string;
+        role: string;
+        timeline: string;
+        technologies: string[];
+        techColor?: string;
+        image: ImageMetadata;
+        imageAlt?: string;
+        cta: {
+            primary: { label: string; href: string; icon: string };
+            secondary: { label: string; href: string; icon: string };
+        };
+        features?: Array<{ icon: string; title: string; description: string }>;
+    };
+}
+
+const { frontmatter } = Astro.props;
+
+// Generate project slug from URL
+const projectId = Astro.url.pathname.split('/').filter(Boolean).pop();
+const siteUrl = Astro.site || Astro.url.origin;
+
+// Create a Project-like object for JSON-LD generation
+const projectForJsonLd: Project = {
+    id: projectId || '',
+    title: frontmatter.title,
+    subtitle: frontmatter.subtitle,
+    category: frontmatter.category,
+    image: frontmatter.image.src,
+    imageAlt: frontmatter.imageAlt || frontmatter.title,
+    technologies: frontmatter.technologies,
+    techColor: frontmatter.techColor || '#000000',
+    role: frontmatter.role,
+    timeline: frontmatter.timeline,
+    description: frontmatter.subtitle,
+    features: frontmatter.features || [],
+    cta: frontmatter.cta,
+};
+
+// Generate JSON-LD
+const projectJsonLd = generateProjectJsonLd(projectForJsonLd, SITE_URL);
+const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: 'Home', url: SITE_URL },
+    { name: 'Work', url: `${SITE_URL}/#work` },
+    { name: frontmatter.title, url: Astro.url.href },
+]);
+
+// Tech icon mapping
+const techIconMap: Record<string, { type: 'fa' | 'text'; icon: string; color: string }> = {
+    React: { type: 'fa', icon: 'fab fa-react', color: 'blue' },
+    'React Native': { type: 'fa', icon: 'fab fa-react', color: 'cyan' },
+    'Next.js': { type: 'text', icon: 'NX', color: 'slate' },
+    Gatsby: { type: 'text', icon: 'GB', color: 'purple' },
+    GraphQL: { type: 'text', icon: 'QL', color: 'pink' },
+    Tailwind: { type: 'fa', icon: 'fab fa-css3-alt', color: 'cyan' },
+    CSS3: { type: 'fa', icon: 'fab fa-css3-alt', color: 'blue' },
+    'Node.js': { type: 'fa', icon: 'fab fa-node-js', color: 'green' },
+    JavaScript: { type: 'fa', icon: 'fab fa-js', color: 'yellow' },
+    TypeScript: { type: 'text', icon: 'TS', color: 'blue' },
+    MongoDB: { type: 'text', icon: 'MG', color: 'green' },
+    Express: { type: 'text', icon: 'EX', color: 'slate' },
+    'Sanity.io': { type: 'text', icon: 'SN', color: 'orange' },
+    'REST API': { type: 'text', icon: 'API', color: 'purple' },
+    LocalStorage: { type: 'text', icon: 'LS', color: 'amber' },
+    JWT: { type: 'text', icon: 'JWT', color: 'pink' },
+    Swagger: { type: 'text', icon: 'SW', color: 'green' },
+    Vercel: { type: 'text', icon: 'VL', color: 'slate' },
+};
+
+// Compute tech icons for template
+const techIcons = frontmatter.technologies.map(tech => ({
+    name: tech,
+    ...(techIconMap[tech] || {
+        type: 'text' as const,
+        icon: tech.slice(0, 2).toUpperCase(),
+        color: 'slate',
+    }),
+}));
+---
+
+<Layout
+    title={`${frontmatter.title} - Thet Aung`}
+    description={frontmatter.subtitle}
+    image={frontmatter.image.src}
+    type="article"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(projectJsonLd)} />
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbJsonLd)} />
+    </Fragment>
+    <!-- Showcase Nav -->
+    <nav class="showcase-nav">
+        <div class="showcase-nav__container">
+            <div class="showcase-nav__left">
+                <a class="showcase-nav__back" href="/#work">
+                    <div class="showcase-nav__back-icon">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </div>
+                    <span class="showcase-nav__back-text">Back to Portfolio</span>
+                </a>
+            </div>
+            <div class="showcase-nav__center">
+                <span class="showcase-nav__label">Project Showcase</span>
+            </div>
+            <div class="showcase-nav__right">
+                <a class="showcase-nav__cta" href="/#contact">
+                    Let's Talk
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="showcase-header">
+        <div class="showcase-header__container">
+            <SectionBadge client:load text={`Case Study · ${frontmatter.category}`} color="blue" />
+
+            <h1 class="showcase-header__title">
+                {frontmatter.title}: <span class="showcase-header__subtitle"
+                    >{frontmatter.subtitle}</span
+                >
+            </h1>
+
+            <!-- Meta info -->
+            <div class="showcase-header__meta">
+                <div class="showcase-header__meta-item">
+                    <span class="showcase-header__meta-label">Role</span>
+                    <span class="showcase-header__meta-value">{frontmatter.role}</span>
+                </div>
+                <div class="showcase-header__meta-divider"></div>
+                <div class="showcase-header__meta-item">
+                    <span class="showcase-header__meta-label">Timeline</span>
+                    <span class="showcase-header__meta-value">{frontmatter.timeline}</span>
+                </div>
+                <div class="showcase-header__meta-divider"></div>
+                <div class="showcase-header__meta-item">
+                    <span class="showcase-header__meta-label">Stack</span>
+                    <span class="showcase-header__meta-value"
+                        >{frontmatter.technologies.join(', ')}</span
+                    >
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Image -->
+    <section class="showcase-image">
+        <div class="showcase-image__container">
+            <div class="showcase-image__wrapper">
+                <img
+                    src={frontmatter.image.src}
+                    alt={frontmatter.imageAlt || frontmatter.title}
+                    class="showcase-image__img"
+                />
+                <div class="showcase-image__overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="showcase-content">
+        <div class="showcase-content__container">
+            <!-- Sidebar TOC -->
+            <aside class="showcase-sidebar showcase-sidebar--left">
+                <div class="showcase-sidebar__sticky">
+                    <h4 class="showcase-sidebar__title">Contents</h4>
+                    <ul class="showcase-sidebar__toc">
+                        <li>
+                            <a
+                                href="#overview"
+                                class="showcase-sidebar__toc-link showcase-sidebar__toc-link--active"
+                                >Overview</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#challenge" class="showcase-sidebar__toc-link">The Challenge</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#technical-approach" class="showcase-sidebar__toc-link"
+                                >Technical Approach</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#results" class="showcase-sidebar__toc-link"
+                                >Results & Impact</a
+                            >
+                        </li>
+                    </ul>
+
+                    <h4 class="showcase-sidebar__title showcase-sidebar__title--mt">Links</h4>
+                    <div class="showcase-sidebar__links">
+                        <a href={frontmatter.cta.primary.href} class="showcase-sidebar__link">
+                            <span class="material-symbols-outlined"
+                                >{frontmatter.cta.primary.icon}</span
+                            >
+                            {frontmatter.cta.primary.label}
+                        </a>
+                        <a href={frontmatter.cta.secondary.href} class="showcase-sidebar__link">
+                            {
+                                frontmatter.cta.secondary.icon.startsWith('fab') ? (
+                                    <i class={frontmatter.cta.secondary.icon} />
+                                ) : (
+                                    <span class="material-symbols-outlined">
+                                        {frontmatter.cta.secondary.icon}
+                                    </span>
+                                )
+                            }
+                            {frontmatter.cta.secondary.label}
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content (MDX) -->
+            <article class="showcase-prose">
+                <slot />
+
+                {
+                    frontmatter.features && frontmatter.features.length > 0 && (
+                        <>
+                            <h2 id="key-features">Key Features</h2>
+                            <FeatureGrid features={frontmatter.features} />
+                        </>
+                    )
+                }
+
+                <!-- CTA Buttons -->
+                <div class="showcase-cta">
+                    <a href={frontmatter.cta.primary.href} class="btn btn--primary btn--lg">
+                        {frontmatter.cta.primary.label}
+                        <span class="material-symbols-outlined">{frontmatter.cta.primary.icon}</span
+                        >
+                    </a>
+                    <a href={frontmatter.cta.secondary.href} class="btn btn--secondary btn--lg">
+                        {
+                            frontmatter.cta.secondary.icon.startsWith('fab') ? (
+                                <i class={frontmatter.cta.secondary.icon} />
+                            ) : (
+                                <span class="material-symbols-outlined">
+                                    {frontmatter.cta.secondary.icon}
+                                </span>
+                            )
+                        }
+                        {frontmatter.cta.secondary.label}
+                    </a>
+                </div>
+            </article>
+
+            <!-- Tech Stack Sidebar -->
+            <aside class="showcase-sidebar showcase-sidebar--right">
+                <div class="showcase-sidebar__sticky">
+                    <h4 class="showcase-sidebar__title">Tech Stack</h4>
+                    <div class="showcase-stack">
+                        {
+                            techIcons.map(tech => (
+                                <div class="showcase-stack__item">
+                                    <div
+                                        class={`showcase-stack__icon showcase-stack__icon--${tech.color}`}>
+                                        {tech.type === 'fa' ? (
+                                            <i class={tech.icon} />
+                                        ) : (
+                                            <span class="showcase-stack__abbr">{tech.icon}</span>
+                                        )}
+                                    </div>
+                                    <span class="showcase-stack__name">{tech.name}</span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Back to Work CTA -->
+    <section class="showcase-back">
+        <div class="showcase-back__container">
+            <a href="/#work" class="showcase-back__link">
+                <span class="material-symbols-outlined">arrow_back</span>
+                View All Projects
+            </a>
+        </div>
+    </section>
+</Layout>
+
+<style lang="scss">
+    /* Showcase Navigation */
+    .showcase-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        display: flex;
+        justify-content: center;
+        padding: 2.4rem 1.6rem;
+    }
+
+    .showcase-nav__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3.2rem;
+        max-width: 128rem;
+        width: 100%;
+        background: var(--navbar-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--border-default);
+        border-radius: 9999px;
+        padding: 1.2rem 2.4rem;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .showcase-nav__left {
+        flex: 1;
+    }
+
+    .showcase-nav__back {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        text-decoration: none;
+        width: fit-content;
+    }
+
+    .showcase-nav__back-icon {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 9999px;
+        background: var(--color-slate-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-slate-600);
+        transition: all 0.2s ease;
+
+        .material-symbols-outlined {
+            font-size: 1.8rem;
+        }
+    }
+
+    .showcase-nav__back:hover .showcase-nav__back-icon {
+        background: var(--color-slate-900);
+        color: white;
+    }
+
+    .showcase-nav__back-text {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--color-slate-800);
+    }
+
+    .showcase-nav__right {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .showcase-nav__center {
+        display: none;
+
+        @media (min-width: 768px) {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .showcase-nav__label {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--color-slate-400);
+    }
+
+    .showcase-nav__cta {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 2rem;
+        background: var(--color-slate-900);
+        color: white;
+        border-radius: 9999px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 10px 15px -3px rgba(var(--color-slate-900-rgb), 0.1);
+
+        .material-symbols-outlined {
+            font-size: 1.6rem;
+        }
+
+        &:hover {
+            background: var(--color-blue-600);
+        }
+    }
+
+    /* Showcase Header */
+    .showcase-header {
+        padding-top: 16rem;
+        padding-bottom: 6.4rem;
+
+        @media (min-width: 1024px) {
+            padding-top: 19.2rem;
+            padding-bottom: 9.6rem;
+        }
+    }
+
+    .showcase-header__container {
+        max-width: 89.6rem;
+        margin: 0 auto;
+        padding: 0 2.4rem;
+        text-align: center;
+
+        @media (min-width: 640px) {
+            padding: 0 3.2rem;
+        }
+    }
+
+    .showcase-header__title {
+        font-size: 4rem;
+        font-weight: 700;
+        color: var(--color-slate-900);
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        margin-bottom: 3.2rem;
+        text-wrap: balance;
+
+        @media (min-width: 640px) {
+            font-size: 4.8rem;
+        }
+
+        @media (min-width: 1024px) {
+            font-size: 6rem;
+        }
+    }
+
+    .showcase-header__subtitle {
+        color: var(--color-slate-400);
+        font-weight: 400;
+    }
+
+    .showcase-header__meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3.2rem;
+        margin-top: 4rem;
+        padding: 2.4rem 4rem;
+        border-top: 1px solid var(--color-slate-100);
+        border-bottom: 1px solid var(--color-slate-100);
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .showcase-header__meta-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .showcase-header__meta-label {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-slate-400);
+    }
+
+    .showcase-header__meta-value {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--color-slate-700);
+    }
+
+    .showcase-header__meta-divider {
+        display: none;
+        width: 1px;
+        height: 4rem;
+        background: var(--color-slate-200);
+
+        @media (min-width: 640px) {
+            display: block;
+        }
+    }
+
+    /* Showcase Image */
+    .showcase-image {
+        padding-bottom: 6.4rem;
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+
+        @media (min-width: 640px) {
+            padding-left: 3.2rem;
+            padding-right: 3.2rem;
+        }
+    }
+
+    .showcase-image__container {
+        max-width: 140.8rem;
+        margin: 0 auto;
+    }
+
+    .showcase-image__wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 3.2rem;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(var(--color-black-rgb), 0.15);
+        border: 1px solid var(--color-slate-100);
+
+        // @media (min-width: 1024px) {
+        //     aspect-ratio: 21 / 9;
+        // }
+    }
+
+    .showcase-image__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .showcase-image__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(var(--color-black-rgb), 0.2), transparent);
+        pointer-events: none;
+    }
+
+    /* Showcase Content */
+    .showcase-content {
+        padding: 6.4rem 0;
+        background: var(--bg-primary);
+    }
+
+    .showcase-content__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4.8rem;
+        max-width: 140.8rem;
+        margin: 0 auto;
+        padding: 0 2.4rem;
+
+        @media (min-width: 1024px) {
+            grid-template-columns: 200px 1fr 200px;
+            gap: 6.4rem;
+            padding: 0 3.2rem;
+        }
+    }
+
+    /* Sidebar */
+    .showcase-sidebar {
+        display: none;
+
+        @media (min-width: 1024px) {
+            display: block;
+        }
+    }
+
+    .showcase-sidebar__sticky {
+        position: sticky;
+        top: 12.8rem;
+    }
+
+    .showcase-sidebar__title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-slate-900);
+        margin-bottom: 1.6rem;
+    }
+
+    .showcase-sidebar__title--mt {
+        margin-top: 3.2rem;
+    }
+
+    .showcase-sidebar__toc {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-left: 1px solid var(--color-slate-200);
+        padding-left: 1.6rem;
+    }
+
+    .showcase-sidebar__toc-link {
+        display: block;
+        padding: 0.8rem 0;
+        font-size: 1.4rem;
+        color: var(--color-slate-500);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--color-slate-900);
+        }
+    }
+
+    .showcase-sidebar__toc-link--active {
+        color: var(--color-slate-900);
+        font-weight: 500;
+        margin-left: -1.7rem;
+        border-left: 2px solid var(--color-slate-900);
+        padding-left: 1.4rem;
+    }
+
+    .showcase-sidebar__links {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .showcase-sidebar__link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--color-slate-600);
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        .material-symbols-outlined,
+        i {
+            font-size: 1.8rem;
+        }
+
+        &:hover {
+            color: var(--color-blue-600);
+        }
+    }
+
+    .showcase-sidebar--right {
+        .showcase-sidebar__sticky {
+            border-left: 1px solid var(--color-slate-200);
+            padding-left: 3.2rem;
+        }
+    }
+
+    /* Tech Stack */
+    .showcase-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    .showcase-stack__item {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    .showcase-stack__icon {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.8rem;
+        background: var(--bg-tertiary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            font-size: 1.6rem;
+        }
+    }
+
+    // Color variants for tech icons
+    .showcase-stack__icon--blue {
+        background: var(--accent-primary-light);
+        color: var(--accent-primary-text);
+        .showcase-stack__abbr {
+            color: var(--accent-primary-text);
+        }
+    }
+
+    .showcase-stack__icon--cyan {
+        background: var(--accent-cyan-light);
+        color: var(--accent-cyan);
+        .showcase-stack__abbr {
+            color: var(--accent-cyan);
+        }
+    }
+
+    .showcase-stack__icon--green {
+        background: var(--accent-green-light);
+        color: var(--accent-green-text);
+        .showcase-stack__abbr {
+            color: var(--accent-green-text);
+        }
+    }
+
+    .showcase-stack__icon--purple {
+        background: var(--accent-purple-light);
+        color: var(--accent-purple-text);
+        .showcase-stack__abbr {
+            color: var(--accent-purple-text);
+        }
+    }
+
+    .showcase-stack__icon--pink {
+        background: var(--accent-pink-light);
+        color: var(--accent-pink);
+        .showcase-stack__abbr {
+            color: var(--accent-pink);
+        }
+    }
+
+    .showcase-stack__icon--orange {
+        background: var(--accent-orange-light);
+        color: var(--accent-orange-text);
+        .showcase-stack__abbr {
+            color: var(--accent-orange-text);
+        }
+    }
+
+    .showcase-stack__icon--yellow {
+        background: var(--accent-yellow-light);
+        color: var(--accent-yellow);
+        .showcase-stack__abbr {
+            color: var(--accent-yellow);
+        }
+    }
+
+    .showcase-stack__icon--amber {
+        background: var(--accent-amber-light);
+        color: var(--accent-amber);
+        .showcase-stack__abbr {
+            color: var(--accent-amber);
+        }
+    }
+
+    .showcase-stack__icon--slate {
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+        .showcase-stack__abbr {
+            color: var(--text-secondary);
+        }
+    }
+
+    .showcase-stack__abbr {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+    }
+
+    .showcase-stack__name {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--button-secondary-text);
+    }
+
+    /* Prose Content */
+    .showcase-prose {
+        max-width: 76.8rem;
+        margin: 0 auto;
+
+        @media (min-width: 1024px) {
+            margin: 0;
+        }
+
+        :global(h2) {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.025em;
+            margin-bottom: 2.4rem;
+            margin-top: 4.8rem;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            @media (min-width: 768px) {
+                font-size: 3rem;
+            }
+        }
+
+        :global(h3) {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-top: 3.2rem;
+            margin-bottom: 1.6rem;
+        }
+
+        :global(p) {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2.4rem;
+        }
+
+        :global(ul),
+        :global(ol) {
+            padding-left: 2.4rem;
+            margin-bottom: 2.4rem;
+        }
+
+        :global(li) {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        :global(strong) {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        :global(code) {
+            background: var(--bg-tertiary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.4rem;
+            font-size: 0.875em;
+            color: var(--navbar-text);
+        }
+
+        :global(blockquote) {
+            padding: 2.4rem;
+            padding-left: 2.4rem;
+            border-left: 4px solid var(--accent-primary);
+            background: var(--bg-secondary);
+            border-radius: 0 0.8rem 0.8rem 0;
+            margin: 4rem 0;
+            font-style: italic;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--button-secondary-text);
+        }
+    }
+
+    /* CTA */
+    .showcase-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6rem;
+        margin-top: 4.8rem;
+        padding-top: 4.8rem;
+        border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Back to Work Section */
+    .showcase-back {
+        padding: 6.4rem 0;
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border-subtle);
+    }
+
+    .showcase-back__container {
+        max-width: 140.8rem;
+        margin: 0 auto;
+        padding: 0 2.4rem;
+        display: flex;
+        justify-content: center;
+
+        @media (min-width: 640px) {
+            padding: 0 3.2rem;
+        }
+    }
+
+    .showcase-back__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1.6rem 3.2rem;
+        background: var(--bg-primary);
+        border: 1px solid var(--border-default);
+        border-radius: 9999px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--navbar-text);
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        .material-symbols-outlined {
+            font-size: 1.8rem;
+        }
+
+        &:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+</style>

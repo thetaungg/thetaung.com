@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Showcase - Thet Aung</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#FFFFFF",
+                        foreground: "#171717",
+                        primary: "#2563EB",
+                        slate: {
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            300: '#CBD5E1',
+                            400: '#94A3B8',
+                            500: '#64748B',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    typography: (theme) => ({
+                        DEFAULT: {
+                            css: {
+                                color: theme('colors.slate.600'),
+                                fontFamily: theme('fontFamily.sans').join(','),
+                                h1: {
+                                    color: theme('colors.slate.900'),
+                                    fontWeight: '700',
+                                    letterSpacing: '-0.025em',
+                                },
+                                h2: {
+                                    color: theme('colors.slate.900'),
+                                    fontWeight: '600',
+                                    letterSpacing: '-0.025em',
+                                    marginTop: '2em',
+                                },
+                                h3: {
+                                    color: theme('colors.slate.900'),
+                                    fontWeight: '600',
+                                    marginTop: '1.5em',
+                                },
+                                'h4,h5,h6': {
+                                    color: theme('colors.slate.900'),
+                                },
+                                strong: {
+                                    color: theme('colors.slate.900'),
+                                    fontWeight: '600',
+                                },
+                                code: {
+                                    color: theme('colors.slate.800'),
+                                    fontWeight: '500',
+                                },
+                                'code::before': { content: '""' },
+                                'code::after': { content: '""' },
+                                blockquote: {
+                                    borderLeftColor: theme('colors.blue.500'),
+                                    color: theme('colors.slate.700'),
+                                    fontStyle: 'italic',
+                                },
+                            },
+                        },
+                    }),
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-foreground antialiased;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                @apply font-display tracking-tight text-foreground;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-4">
+<div class="bg-white/90 backdrop-blur-xl border border-slate-200 shadow-sm rounded-full px-6 py-3 flex items-center justify-between gap-8 max-w-5xl w-full transition-all">
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-3 group" href="#">
+<div class="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+</div>
+<span class="font-semibold text-sm text-slate-800 tracking-tight group-hover:text-slate-900">Back to Portfolio</span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-1">
+<span class="text-xs font-medium text-slate-400">Project Showcase</span>
+</div>
+<div>
+<a class="px-5 py-2.5 rounded-full bg-slate-900 text-white font-medium text-xs hover:bg-blue-600 transition-all shadow-lg shadow-slate-900/10 flex items-center gap-2" href="#contact">
+                    Let's Talk
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</nav>
+<header class="pt-40 pb-16 lg:pt-48 lg:pb-24">
+<div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[11px] font-bold uppercase tracking-widest mb-6">
+<span>Case Study</span>
+<span class="w-1 h-1 rounded-full bg-blue-400"></span>
+<span>Web Application</span>
+</div>
+<h1 class="font-bold text-5xl sm:text-6xl lg:text-7xl tracking-tighter text-slate-900 text-balance leading-[1.1] mb-8">
+                Portfolio v1: <span class="text-slate-400 font-normal">Minimalism Meets Performance</span>
+</h1>
+<p class="text-lg sm:text-xl text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
+                A deep dive into building a high-performance personal website using Gatsby, GraphQL, and static site generation principles for sub-100ms load times.
+            </p>
+<div class="flex flex-wrap justify-center gap-8 mt-10 text-sm text-slate-600 border-t border-b border-slate-100 py-6 w-fit mx-auto px-10">
+<div class="flex flex-col items-center gap-1">
+<span class="uppercase tracking-wider text-[10px] font-bold text-slate-400">Role</span>
+<span class="font-medium">Frontend Engineer</span>
+</div>
+<div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
+<div class="flex flex-col items-center gap-1">
+<span class="uppercase tracking-wider text-[10px] font-bold text-slate-400">Timeline</span>
+<span class="font-medium">3 Weeks</span>
+</div>
+<div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
+<div class="flex flex-col items-center gap-1">
+<span class="uppercase tracking-wider text-[10px] font-bold text-slate-400">Stack</span>
+<span class="font-medium">Gatsby, React, GraphQL</span>
+</div>
+</div>
+</div>
+</header>
+<section class="pb-16 px-6 sm:px-8">
+<div class="max-w-7xl mx-auto">
+<div class="relative w-full aspect-[16/10] lg:aspect-[21/9] rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100 group">
+<img alt="Project Hero Image - Portfolio Dashboard" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC-ViML9qjhD0x6MP3NZIJNgMucCRgvtymx5W8vUPhSiBvbkDuMneiaJ_qH2n07CPDLscAYjHQBzxw4Glqy1TtDlb9xtUfP5Q0Jm9JeYDF19UNBtjhbdzR_prqiGTfNJeK6B4aHzffWGfp6Kv9RBECfHyNAhZhGfQnWxH5VXoW381M_1-KADL5nklvUqE7gojFZrM42VW_Z8VHi-uO6m-G2msi6rzs0ddyzPV0-WskfQuPpOzQ7mPOv3Ag6KTFQ-iYWRgCcs1bvQ8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+<div class="lg:col-span-3 lg:block hidden">
+<div class="sticky top-32 space-y-8">
+<div>
+<h4 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Contents</h4>
+<ul class="space-y-3 text-sm border-l border-slate-200 pl-4">
+<li><a class="text-slate-900 font-medium hover:text-blue-600 transition-colors block -ml-[17px] border-l-2 border-slate-900 pl-3.5" href="#overview">Overview</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors block" href="#challenge">The Challenge</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors block" href="#technical-approach">Technical Approach</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors block" href="#results">Results &amp; Impact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Links</h4>
+<div class="space-y-3">
+<a class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                                    Live Demonstration
+                                </a>
+<a class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors text-sm font-medium" href="#">
+<i class="fab fa-github text-[16px]"></i>
+                                    Source Code
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 prose prose-lg prose-slate max-w-none">
+<h2 class="text-3xl font-bold text-slate-900 tracking-tight mt-0" id="overview">Project Overview</h2>
+<p>
+                        In a digital landscape dominated by heavy client-side applications, I sought a return to simplicity without sacrificing modern developer experience (DX). The objective for <strong>Portfolio v1</strong> was clear: achieve sub-100ms load times and a perfect Lighthouse score, demonstrating that high interactivity doesn't have to compromise performance.
+                    </p>
+<p>
+                        This project serves as both my professional calling card and a playground for experimenting with static site generation (SSG) techniques.
+                    </p>
+<h2 id="challenge">The Challenge</h2>
+<p>
+                        Most modern portfolios suffer from "bloat"—loading heavy JavaScript bundles for simple content display. My challenge was to architect a system that:
+                    </p>
+<ul class="list-disc pl-5 space-y-2 text-slate-600 marker:text-blue-500">
+<li>Loads instantly even on 3G networks.</li>
+<li>Maintains a high level of visual fidelity with crisp typography and imagery.</li>
+<li>Is easily maintainable without a complex CMS backend.</li>
+<li>Is fully accessible (WCAG AA compliant).</li>
+</ul>
+<h2 id="technical-approach">Technical Approach</h2>
+<p>
+                        I chose <strong>Gatsby</strong> as the core framework because of its robust plugin ecosystem and image processing capabilities. By leveraging Gatsby's GraphQL data layer, I could decouple my content from the UI components completely.
+                    </p>
+<h3>1. Content Management via MDX</h3>
+<p>
+                        Instead of a database, content lives in Markdown (MDX) files within the Git repository. This allows for version-controlled content updates and the ability to embed React components directly inside blog posts.
+                    </p>
+<div class="not-prose my-10 rounded-xl bg-slate-50 border border-slate-200 overflow-hidden">
+<div class="flex items-center justify-between px-4 py-3 bg-white border-b border-slate-100">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-slate-200"></div>
+<div class="w-3 h-3 rounded-full bg-slate-200"></div>
+<div class="w-3 h-3 rounded-full bg-slate-200"></div>
+</div>
+<span class="text-xs font-mono text-slate-400">gatsby-node.js</span>
+</div>
+<div class="p-6 overflow-x-auto">
+<pre class="font-mono text-sm text-slate-700 leading-relaxed"><code><span class="text-purple-600">exports</span>.<span class="text-blue-600">createPages</span> = <span class="text-purple-600">async</span> ({ actions, graphql, reporter }) =&gt; {
+  <span class="text-purple-600">const</span> { createPage } = actions
+  <span class="text-slate-400">// Query for markdown nodes to use in creating pages.</span>
+  <span class="text-purple-600">const</span> result = <span class="text-purple-600">await</span> <span class="text-blue-600">graphql</span>(`
+    {
+      allMdx {
+        nodes {
+          id
+          fields { slug }
+          internal { contentFilePath }
+        }
+      }
+    }
+  `)
+  <span class="text-slate-400">// Handle errors &amp; create pages...</span>
+}</code></pre>
+</div>
+</div>
+<h3>2. Image Optimization Strategy</h3>
+<p>
+                        Images are often the biggest bottleneck. I utilized <code>gatsby-plugin-image</code> to generate multiple sizes of every image at build time. The browser then serves the optimal size based on the device's viewport, with AVIF and WebP formats prioritized. A blurred placeholder is shown initially to prevent layout shift (CLS).
+                    </p>
+<figure class="my-10">
+<img alt="Optimization Diagram" class="rounded-xl border border-slate-100 shadow-sm w-full bg-slate-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7j51agWObGOt6mm76I9wHP8cDnTnX6Z8DBMvuqIJqlcjse-3aYtyjB16J2B80wSBGphXA0aGGmrvAcvs1H797O-GyiYBVMiOvdUVVmlPKPY9yeTMIHBDRcLEc2od0I86-lIu-hYUlQkdfEVA2rd_Vflx-yr-_VBZYqWYFIKja46tKe6_ripcqF_K1sLOyK2xxQXsA0EDNU-vdMbVIIZqrvO9OYtlFCmUu0OfvTo0rnhgLupY7JDHXoT0nzhYc7DgVi7aTIk2WutQ"/>
+<figcaption class="text-center text-sm text-slate-400 mt-3 font-medium">Fig 1. Automated asset optimization pipeline</figcaption>
+</figure>
+<h2 id="results">Results &amp; Impact</h2>
+<p>
+                        The final build is hosted on Netlify with global CDN distribution. The performance metrics speak for themselves:
+                    </p>
+<div class="not-prose grid grid-cols-2 sm:grid-cols-4 gap-4 my-8">
+<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
+<div class="text-3xl font-bold text-slate-900 mb-1">100</div>
+<div class="text-xs uppercase tracking-wider font-bold text-slate-400">Performance</div>
+</div>
+<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
+<div class="text-3xl font-bold text-slate-900 mb-1">100</div>
+<div class="text-xs uppercase tracking-wider font-bold text-slate-400">Accessibility</div>
+</div>
+<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
+<div class="text-3xl font-bold text-slate-900 mb-1">100</div>
+<div class="text-xs uppercase tracking-wider font-bold text-slate-400">Best Practices</div>
+</div>
+<div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
+<div class="text-3xl font-bold text-slate-900 mb-1">100</div>
+<div class="text-xs uppercase tracking-wider font-bold text-slate-400">SEO</div>
+</div>
+</div>
+<p>
+                        Beyond the raw numbers, the site provides a seamless user experience. Navigation feels instantaneous thanks to Gatsby's pre-fetching of linked resources. The minimalist aesthetic ensures that content remains the focal point, while subtle micro-interactions add a layer of polish without dragging down the CPU.
+                    </p>
+<blockquote class="pl-6 border-l-4 border-blue-500 italic text-slate-700 text-xl font-light bg-slate-50 py-6 pr-6 rounded-r-lg my-10">
+                        "The goal was never just to build a website, but to engineer an experience that disappears, leaving only the content."
+                    </blockquote>
+</div>
+<div class="lg:col-span-2">
+<div class="lg:sticky lg:top-32 border-t lg:border-t-0 lg:border-l border-slate-200 pt-8 lg:pt-0 lg:pl-8">
+<h4 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Tech Stack</h4>
+<div class="flex flex-row lg:flex-col flex-wrap gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 text-sm">
+<i class="fab fa-react"></i>
+</div>
+<span class="text-sm font-medium text-slate-700">React</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600 text-sm">
+<span class="font-bold text-[10px]">GB</span>
+</div>
+<span class="text-sm font-medium text-slate-700">Gatsby</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center text-pink-600 text-sm">
+<span class="font-bold text-[10px]">QL</span>
+</div>
+<span class="text-sm font-medium text-slate-700">GraphQL</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center text-sky-600 text-sm">
+<i class="fab fa-css3-alt"></i>
+</div>
+<span class="text-sm font-medium text-slate-700">Tailwind</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center text-green-600 text-sm">
+<i class="fab fa-node-js"></i>
+</div>
+<span class="text-sm font-medium text-slate-700">Node.js</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-2">Next Projects</h2>
+<p class="text-slate-500">Explore more of my recent engineering work.</p>
+</div>
+<a class="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-slate-900 border-b border-slate-300 pb-0.5 hover:border-slate-900 transition-colors" href="#work">
+                    View All Work
+                </a>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<a class="group block bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300" href="#">
+<div class="aspect-[16/9] w-full overflow-hidden bg-slate-100 relative">
+<img alt="IT Solutions Platform" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAb3Gz2PW_la0z9jtUs8vQwaXXDEfJ9OZWVAZoKm1oRnCMQ_Lts86-HAniOLtTQN2M7NWqVpr8z5pfyEwd2nxN3lZh9_YclNSYi_369NQqKz9mgxSKUdvF7fILjvVu4zjbq1brNWm0Ebgdmlf1Q8SydDD4CAEensoNMKzPsGBZZMHCFMPQkBVpYtsOQwaMnYlDwji9XYmUMsUu_nYqc6klpk7Wvb9ITtjAcXggcwA3nwL-1HCvJeqclvndY7zzQnhkuJr8OulJofA"/>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-2 py-1 rounded-md">Full Stack</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">IT Solutions Platform</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-4">Corporate presence with headless CMS integration using Sanity.io and Next.js.</p>
+<div class="flex items-center text-sm font-medium text-slate-900 group-hover:translate-x-1 transition-transform">
+                            Read Case Study <span class="material-symbols-outlined text-lg ml-1">arrow_forward</span>
+</div>
+</div>
+</a>
+<a class="group block bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300" href="#">
+<div class="aspect-[16/9] w-full overflow-hidden bg-slate-100 relative">
+<img alt="Rick &amp; Morty Wiki" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHkUFsW6vUsGDXU_nVYI2idvHBvXeGA_o82Su-ouCWW1tGX1jgb8UoorpY_1tCn1r0yi5S53FbJxkBd2R9hS2WtPZl2f3EmKyOA_J9VJ-9au4Rn_b29DxXsQZEO6zuLIaGdTe7HbZ_psKJNl5Lt9e7G1eCPJp9ZB7Y_b6yWX9p6a2IkEE9j7toXqMfDfaiFEQJbLnW7frSJ6vzmPcZinGK5YLMyuQdogEmwVOZQOY8eg9SKRtSgu8DKYRQPPUw2MMl-ijiaWY0VXQ"/>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-yellow-600 bg-yellow-50 px-2 py-1 rounded-md">Web App</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Rick &amp; Morty Wiki</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-4">Interactive character database exploring advanced React patterns and caching.</p>
+<div class="flex items-center text-sm font-medium text-slate-900 group-hover:translate-x-1 transition-transform">
+                            Read Case Study <span class="material-symbols-outlined text-lg ml-1">arrow_forward</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<footer class="bg-white py-12 border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-center md:text-left">
+<h3 class="font-semibold text-lg text-slate-900">Thet Aung</h3>
+<p class="text-xs text-slate-400 mt-1">© 2026. Crafted with code and creativity.</p>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-slate-400 hover:text-slate-900 transition-colors transform hover:scale-110" href="#">
+<i class="fab fa-github text-2xl"></i>
+</a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors transform hover:scale-110" href="#">
+<i class="fab fa-linkedin text-2xl"></i>
+</a>
+<a class="text-slate-400 hover:text-orange-500 transition-colors transform hover:scale-110" href="#">
+<i class="fab fa-stack-overflow text-2xl"></i>
+</a>
+<a class="text-slate-400 hover:text-red-500 transition-colors transform hover:scale-110" href="#">
+<i class="far fa-envelope text-2xl"></i>
+</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

@@ -1,0 +1,62 @@
+---
+interface Props {
+    id: string;
+    label: string;
+    placeholder?: string;
+    rows?: number;
+    required?: boolean;
+    name?: string;
+}
+
+const { id, label, placeholder, rows = 4, required = false, name } = Astro.props;
+---
+
+<div class="textarea-field">
+    <label for={id} class="textarea-field__label">{label}</label>
+    <textarea
+        id={id}
+        name={name || id}
+        class="textarea-field__input"
+        placeholder={placeholder}
+        rows={rows}
+        required={required}></textarea>
+</div>
+
+<style>
+    .textarea-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .textarea-field__label {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--color-slate-700);
+    }
+
+    .textarea-field__input {
+        width: 100%;
+        padding: 1.4rem 1.6rem;
+        border: 1px solid var(--color-slate-200);
+        border-radius: 1.2rem;
+        background: white;
+        font-family: inherit;
+        font-size: 1.6rem;
+        color: var(--color-slate-900);
+        resize: vertical;
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        &::placeholder {
+            color: var(--color-slate-400);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-blue-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+    }
+</style>

@@ -1,0 +1,149 @@
+---
+import { aboutData } from '../data/about';
+---
+
+<section id="about" class="about">
+    <div class="about__container">
+        <div class="about__image-wrapper">
+            <img src={aboutData.image} alt={aboutData.imageAlt} class="about__image" />
+        </div>
+
+        <div class="about__content">
+            <h2 class="about__title">{aboutData.title}</h2>
+
+            <div class="about__text">
+                <Fragment set:html={aboutData.paragraph} />
+
+                <div class="about__quote">
+                    <div class="about__quote-border"></div>
+                    <p class="about__quote-text" set:html={aboutData.quote} />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    .about {
+        padding: 9.6rem 0;
+        background: var(--bg-primary);
+
+        @media (min-width: 768px) {
+            padding: 9.6rem 0;
+        }
+    }
+
+    .about__container {
+        max-width: 115.2rem;
+        margin: 0 auto;
+        padding: 0 2.4rem;
+        display: grid;
+        gap: 6.4rem;
+        align-items: center;
+
+        @media (min-width: 640px) {
+            padding: 0 3.2rem;
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: 1fr 1fr;
+            gap: 9.6rem;
+            padding: 0 4.8rem;
+        }
+    }
+
+    .about__image-wrapper {
+        background: var(--bg-secondary);
+        border-radius: 4rem;
+        padding: 4.8rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-subtle);
+        order: 2;
+
+        @media (min-width: 1024px) {
+            order: 1;
+        }
+    }
+
+    .about__image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        position: relative;
+        z-index: 10;
+        mix-blend-mode: darken;
+        opacity: 0.8;
+    }
+
+    .about__content {
+        order: 1;
+
+        @media (min-width: 1024px) {
+            order: 2;
+        }
+    }
+
+    .about__title {
+        font-size: 3rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        letter-spacing: -0.025em;
+        margin-bottom: 2.4rem;
+
+        @media (min-width: 1024px) {
+            font-size: 3.6rem;
+        }
+    }
+
+    .about__text {
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+
+        :global(p) {
+            font-size: 1.8rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        :global(strong) {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+    }
+
+    .about__quote {
+        padding-top: 2.4rem;
+        display: flex;
+    }
+
+    .about__quote-border {
+        width: 2px;
+        background: var(--accent-primary);
+        flex-shrink: 0;
+        margin-right: 2.4rem;
+    }
+
+    .about__quote-text {
+        font-size: 1.6rem !important;
+        font-weight: 500 !important;
+        font-style: italic;
+        color: var(--navbar-text) !important;
+    }
+</style>
+<style is:global>
+    .about__quote-text a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-color: var(--accent-primary);
+        text-underline-offset: 4px;
+        text-decoration-thickness: 1px;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--accent-primary);
+        }
+    }
+</style>

@@ -1,0 +1,61 @@
+---
+interface Metric {
+    value: string | number;
+    label: string;
+}
+
+interface Props {
+    metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<div class="metrics-grid">
+    {
+        metrics.map(metric => (
+            <div class="metrics-grid__item">
+                <div class="metrics-grid__value">{metric.value}</div>
+                <div class="metrics-grid__label">{metric.label}</div>
+            </div>
+        ))
+    }
+</div>
+
+<style>
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.6rem;
+        margin: 3.2rem 0;
+    }
+
+    @media (min-width: 640px) {
+        .metrics-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .metrics-grid__item {
+        background: var(--showcase-card-bg);
+        padding: 2.4rem;
+        border-radius: 1.6rem;
+        border: 1px solid var(--showcase-card-border);
+        text-align: center;
+    }
+
+    .metrics-grid__value {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--showcase-value);
+        margin-bottom: 0.4rem;
+    }
+
+    .metrics-grid__label {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--showcase-label);
+    }
+</style>

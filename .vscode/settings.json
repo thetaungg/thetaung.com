@@ -1,0 +1,11 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "[typescript][typescriptreact][javascript][javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "eslint.validate": ["javascript", "typescript", "typescriptreact", "astro"]
+}

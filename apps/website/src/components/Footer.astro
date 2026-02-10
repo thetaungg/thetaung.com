@@ -1,0 +1,111 @@
+---
+import { footerData } from '../data/site';
+---
+
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__info">
+            <h3 class="footer__name">{footerData.name}</h3>
+            <p class="footer__copyright">
+                {footerData.copyright}
+            </p>
+        </div>
+
+        <div class="footer__social">
+            {
+                footerData.socialLinks.map(link => (
+                    <a
+                        href={link.href}
+                        class={`footer__social-link footer__social-link--${link.hoverColor}`}
+                        aria-label={link.icon.split(' ').pop()}>
+                        <i class={link.icon} />
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</footer>
+
+<style lang="scss">
+    .footer {
+        padding: 4.8rem 0;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.4rem;
+        max-width: 115.2rem;
+        margin: 0 auto;
+        padding: 0 2.4rem;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 3.2rem;
+        }
+
+        @media (min-width: 1024px) {
+            padding: 0 4.8rem;
+        }
+    }
+
+    .footer__info {
+        text-align: center;
+
+        @media (min-width: 768px) {
+            text-align: left;
+        }
+    }
+
+    .footer__name {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--text-heading);
+    }
+
+    .footer__copyright {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        margin-top: 0.4rem;
+    }
+
+    .footer__social {
+        display: flex;
+        align-items: center;
+        gap: 2.4rem;
+    }
+
+    .footer__social-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        i {
+            font-size: 2.4rem;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .footer__social-link--slate:hover {
+        color: var(--text-primary);
+    }
+
+    .footer__social-link--blue:hover {
+        color: var(--accent-primary);
+    }
+
+    .footer__social-link--orange:hover {
+        color: var(--accent-orange-bright);
+    }
+
+    .footer__social-link--red:hover {
+        color: var(--accent-red);
+    }
+</style>

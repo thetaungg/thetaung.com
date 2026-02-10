@@ -1,0 +1,509 @@
+@use 'variables';
+
+/* ===========================================
+   Semantic Design Tokens (Light/Dark Theme)
+   =========================================== */
+
+:root {
+    /* ===========================================
+     Light Theme (Default)
+     =========================================== */
+
+    /* Backgrounds */
+    --bg-primary: var(--color-white);
+    --bg-secondary: var(--color-slate-50);
+    --bg-tertiary: var(--color-slate-100);
+    --bg-inverse: var(--color-slate-900);
+    --bg-overlay: rgba(var(--color-white-rgb), 0.8);
+    --bg-overlay-dark: rgba(var(--color-slate-900-rgb), 0.8);
+
+    /* Text */
+    --text-primary: var(--color-slate-900);
+    --text-secondary: var(--color-slate-600);
+    --text-tertiary: var(--color-slate-500);
+    --text-muted: var(--color-slate-400);
+    --text-inverse: var(--color-white);
+    --text-heading: var(--color-slate-900);
+
+    /* Borders */
+    --border-default: var(--color-slate-200);
+    --border-subtle: var(--color-slate-100);
+    --border-strong: var(--color-slate-300);
+    --border-input: var(--color-slate-200);
+    --border-input-focus: var(--color-slate-900);
+
+    /* Accent Colors - Primary (Blue) */
+    --accent-primary: var(--color-blue-600);
+    --accent-primary-hover: var(--color-blue-700);
+    --accent-primary-light: var(--color-blue-100);
+    --accent-primary-text: var(--color-blue-600);
+    --accent-primary-dark: var(--color-blue-800);
+
+    /* Accent Colors - Secondary (Purple) */
+    --accent-purple: var(--color-purple-600);
+    --accent-purple-light: var(--color-purple-100);
+    --accent-purple-text: var(--color-purple-600);
+    --accent-purple-dark: var(--color-purple-700);
+
+    /* Accent Colors - Green */
+    --accent-green: var(--color-green-600);
+    --accent-green-light: var(--color-green-100);
+    --accent-green-text: var(--color-green-600);
+    --accent-green-bright: var(--color-emerald-500);
+
+    /* Accent Colors - Orange */
+    --accent-orange: var(--color-orange-600);
+    --accent-orange-light: var(--color-orange-100);
+    --accent-orange-text: var(--color-orange-600);
+    --accent-orange-bright: var(--color-orange-500);
+
+    /* Accent Colors - Yellow */
+    --accent-yellow: var(--color-yellow-600);
+    --accent-yellow-light: var(--color-yellow-50);
+    --accent-yellow-text: var(--color-yellow-700);
+
+    /* Accent Colors - Red */
+    --accent-red: var(--color-red-500);
+    --accent-red-light: var(--color-red-100);
+    --accent-red-text: var(--color-red-600);
+
+    /* Accent Colors - Slate/Neutral */
+    --accent-slate: var(--color-slate-600);
+    --accent-slate-light: var(--color-slate-200);
+    --accent-slate-text: var(--color-slate-600);
+
+    /* Accent Colors - Cyan/Sky */
+    --accent-cyan: var(--color-sky-600);
+    --accent-cyan-light: var(--color-cyan-100);
+
+    /* Accent Colors - Pink */
+    --accent-pink: var(--color-pink-300);
+    --accent-pink-light: var(--color-pink-100);
+
+    /* Accent Colors - Amber */
+    --accent-amber: var(--color-yellow-700);
+    --accent-amber-light: var(--color-amber-100);
+
+    /* Accent Colors - Violet (for gradients) */
+    --accent-violet: var(--color-violet-500);
+
+    /* Interactive States */
+    --focus-ring: var(--color-blue-600);
+    --selection-bg: var(--color-blue-100);
+    --selection-text: var(--color-blue-900);
+
+    /* Status Colors */
+    --success-bg: var(--color-green-100);
+    --success-text: var(--color-green-600);
+    --error-bg: var(--color-red-100);
+    --error-text: var(--color-red-600);
+    --warning-bg: var(--color-yellow-50);
+    --warning-text: var(--color-yellow-700);
+
+    /* Component Tokens - Buttons */
+    --button-primary-bg: var(--color-slate-900);
+    --button-primary-text: var(--color-white);
+    --button-primary-hover: var(--color-blue-600);
+    --button-primary-shadow: rgba(var(--color-blue-600-rgb), 0.2);
+    --button-secondary-bg: transparent;
+    --button-secondary-text: var(--color-slate-700);
+    --button-secondary-border: var(--color-slate-200);
+    --button-secondary-hover-bg: var(--color-slate-50);
+    --button-secondary-hover-border: var(--color-slate-300);
+
+    /* Component Tokens - Cards */
+    --card-bg: var(--color-white);
+    --card-border: rgba(var(--color-black-rgb), 0.04);
+    --card-shadow:
+        0 4px 6px -1px rgba(var(--color-black-rgb), 0.05),
+        0 25px 50px -12px rgba(var(--color-black-rgb), 0.12);
+    --card-shadow-hover: 0 8px 24px rgba(var(--color-slate-900-rgb), 0.15);
+
+    /* Component Tokens - Inputs */
+    --input-bg: transparent;
+    --input-text: var(--color-slate-900);
+    --input-placeholder: var(--color-slate-400);
+    --input-border: var(--color-slate-200);
+    --input-border-focus: var(--color-slate-900);
+
+    /* Component Tokens - Navigation */
+    --navbar-bg: rgba(var(--color-white-rgb), 0.8);
+    --navbar-border: rgba(var(--color-slate-200-rgb), 0.6);
+    --navbar-text: var(--color-slate-800);
+    --navbar-link: var(--color-slate-500);
+    --navbar-link-hover: var(--color-slate-900);
+    --navbar-link-hover-bg: var(--color-slate-50);
+
+    /* Component Tokens - Tooltips */
+    --tooltip-bg: var(--color-slate-900);
+    --tooltip-text: var(--color-white);
+
+    /* Component Tokens - Badges */
+    --badge-default-bg: var(--color-slate-100);
+    --badge-default-text: var(--color-slate-600);
+
+    /* Component Tokens - Timeline */
+    --timeline-line: var(--color-slate-100);
+    --timeline-dot: var(--color-slate-300);
+    --timeline-dot-active: var(--color-blue-600);
+    --timeline-dot-shadow: rgba(var(--color-blue-600-rgb), 0.15);
+
+    /* Component Tokens - Code Blocks (Dark theme for code) */
+    --code-bg: var(--color-slate-900);
+    --code-header-bg: var(--color-slate-800);
+    --code-border: var(--color-slate-700);
+    --code-header-border: var(--color-slate-700);
+    --code-filename: var(--color-slate-400);
+    --code-dot: var(--color-slate-600);
+    --code-text: var(--color-slate-100);
+
+    /* Component Tokens - Showcase */
+    --showcase-card-bg: var(--bg-secondary);
+    --showcase-card-border: var(--border-subtle);
+    --showcase-title: var(--text-heading);
+    --showcase-description: var(--text-tertiary);
+    --showcase-icon-bg: var(--bg-primary);
+    --showcase-icon-color: var(--accent-primary);
+    --showcase-caption: var(--text-muted);
+    --showcase-value: var(--text-heading);
+    --showcase-label: var(--text-muted);
+
+    /* Decorative - Gradients (use rgb values for complex gradients) */
+    --gradient-primary-start: var(--color-blue-800);
+    --gradient-primary-mid: var(--color-blue-600);
+    --gradient-primary-end: var(--color-blue-500);
+
+    --gradient-purple-start: var(--color-purple-700);
+    --gradient-purple-mid: var(--color-purple-600);
+    --gradient-purple-end: var(--color-purple-500);
+
+    --gradient-founder-start-rgb: var(--color-violet-500-rgb);
+    --gradient-founder-end-rgb: var(--color-orange-500-rgb);
+
+    /* Decorative - Blob/Background colors (using rgb for opacity control) */
+    --blob-blue-rgb: var(--color-blue-200-rgb);
+    --blob-purple-rgb: var(--color-purple-200-rgb);
+    --blob-green-rgb: var(--color-green-300-rgb);
+
+    /* Color-specific shadows (using rgb values) */
+    --shadow-blue-rgb: var(--color-blue-600-rgb);
+    --shadow-purple-rgb: var(--color-purple-600-rgb);
+    --shadow-yellow-rgb: var(--color-yellow-600-rgb);
+    --shadow-orange-rgb: var(--color-orange-600-rgb);
+    --shadow-slate-rgb: var(--color-slate-400-rgb);
+
+    /* Bubble/Skill colors (using rgb for semi-transparent effects) */
+    --bubble-blue-border-rgb: var(--color-blue-200-rgb);
+    --bubble-blue-hover-rgb: var(--color-blue-300-rgb);
+    --bubble-cyan-border-rgb: var(--color-cyan-100-rgb);
+    --bubble-cyan-hover-rgb: var(--color-cyan-200-rgb);
+    --bubble-green-border-rgb: var(--color-green-200-rgb);
+    --bubble-green-hover-rgb: var(--color-green-300-rgb);
+    --bubble-purple-border-rgb: var(--color-purple-200-rgb);
+    --bubble-purple-hover-rgb: var(--color-purple-300-rgb);
+    --bubble-pink-border-rgb: var(--color-pink-100-rgb);
+    --bubble-pink-hover-rgb: var(--color-pink-300-rgb);
+    --bubble-orange-border-rgb: var(--color-orange-200-rgb);
+    --bubble-orange-hover-rgb: var(--color-orange-300-rgb);
+    --bubble-amber-border-rgb: var(--color-amber-100-rgb);
+    --bubble-amber-hover-rgb: var(--color-amber-200-rgb);
+    --bubble-slate-border-rgb: var(--color-slate-200-rgb);
+    --bubble-slate-hover-rgb: var(--color-slate-300-rgb);
+    --bubble-yellow-border-rgb: var(--color-yellow-200-rgb);
+    --bubble-yellow-hover-rgb: var(--color-yellow-300-rgb);
+
+    /* Category/Tag colors */
+    --tag-slate-bg-rgb: var(--color-slate-400-rgb);
+    --tag-slate-text: var(--color-slate-600);
+    --tag-purple-bg-rgb: var(--color-purple-600-rgb);
+    --tag-purple-text: var(--color-purple-700);
+    --tag-yellow-bg-rgb: var(--color-yellow-600-rgb);
+    --tag-yellow-text: var(--color-yellow-700);
+    --tag-orange-bg-rgb: var(--color-orange-600-rgb);
+    --tag-orange-text: var(--color-orange-700);
+
+    /* Slide/Category overlay colors (on dark backgrounds) */
+    --category-slate-text: var(--color-blue-300);
+    --category-purple-text: var(--color-purple-300);
+    --category-yellow-text: var(--color-yellow-300);
+    --category-orange-text: var(--color-orange-300);
+
+    /* Number/decorative gradient colors */
+    --number-blue-start-rgb: var(--color-blue-600-rgb);
+    --number-blue-end-rgb: var(--color-blue-500-rgb);
+    --number-purple-start-rgb: var(--color-purple-600-rgb);
+    --number-purple-end-rgb: var(--color-purple-500-rgb);
+    --number-yellow-start-rgb: var(--color-yellow-600-rgb);
+    --number-yellow-end-rgb: var(--color-yellow-300-rgb);
+    --number-orange-start-rgb: var(--color-orange-600-rgb);
+    --number-orange-end-rgb: var(--color-orange-500-rgb);
+}
+
+/* ===========================================
+   Dark Theme
+   =========================================== */
+[data-theme='dark'] {
+    /* Backgrounds */
+    --bg-primary: var(--color-slate-900);
+    --bg-secondary: var(--color-slate-800);
+    --bg-tertiary: var(--color-slate-700);
+    --bg-inverse: var(--color-white);
+    --bg-overlay: rgba(var(--color-slate-900-rgb), 0.9);
+    --bg-overlay-dark: rgba(var(--color-black-rgb), 0.8);
+
+    /* Text */
+    --text-primary: var(--color-slate-50);
+    --text-secondary: var(--color-slate-300);
+    --text-tertiary: var(--color-slate-400);
+    --text-muted: var(--color-slate-500);
+    --text-inverse: var(--color-slate-900);
+    --text-heading: var(--color-slate-50);
+
+    /* Borders */
+    --border-default: var(--color-slate-700);
+    --border-subtle: var(--color-slate-800);
+    --border-strong: var(--color-slate-600);
+    --border-input: var(--color-slate-600);
+    --border-input-focus: var(--color-slate-400);
+
+    /* Accent Colors - Primary (Blue) */
+    --accent-primary: var(--color-blue-500);
+    --accent-primary-hover: var(--color-blue-400);
+    --accent-primary-light: rgba(var(--color-blue-500-rgb), 0.2);
+    --accent-primary-text: var(--color-blue-400);
+
+    /* Status Colors */
+    --success-bg: rgba(var(--color-green-500-rgb), 0.2);
+    --success-text: var(--color-green-400);
+    --error-bg: rgba(var(--color-red-500-rgb), 0.2);
+    --error-text: var(--color-red-500);
+    --warning-bg: rgba(var(--color-yellow-600-rgb), 0.2);
+    --warning-text: var(--color-yellow-300);
+
+    /* Component Tokens - Buttons */
+    --button-primary-bg: var(--color-blue-600);
+    --button-primary-text: var(--color-white);
+    --button-primary-hover: var(--color-blue-500);
+    --button-secondary-bg: transparent;
+    --button-secondary-text: var(--color-slate-100);
+    --button-secondary-border: var(--color-slate-600);
+    --button-secondary-hover-bg: var(--color-slate-700);
+    --button-secondary-hover-border: var(--color-slate-500);
+
+    /* Component Tokens - Cards */
+    --card-bg: var(--color-slate-800);
+    --card-shadow:
+        0 4px 6px -1px rgba(var(--color-black-rgb), 0.3),
+        0 25px 50px -12px rgba(var(--color-black-rgb), 0.5);
+
+    /* Component Tokens - Inputs */
+    --input-text: var(--color-slate-50);
+    --input-placeholder: var(--color-slate-500);
+    --input-border: var(--color-slate-600);
+    --input-border-focus: var(--color-slate-400);
+
+    /* Component Tokens - Navigation */
+    --navbar-bg: rgba(var(--color-slate-900-rgb), 0.9);
+    --navbar-border: rgba(var(--color-slate-700-rgb), 0.6);
+    --navbar-text: var(--color-slate-100);
+    --navbar-link: var(--color-slate-400);
+    --navbar-link-hover: var(--color-slate-50);
+    --navbar-link-hover-bg: var(--color-slate-700);
+
+    /* Component Tokens - Tooltips */
+    --tooltip-bg: var(--color-slate-700);
+    --tooltip-text: var(--color-white);
+
+    /* Component Tokens - Timeline */
+    --timeline-line: var(--color-slate-700);
+    --timeline-dot: var(--color-slate-600);
+}
+
+/* Auto dark mode based on system preference */
+// @media (prefers-color-scheme: dark) {
+//   :root:not([data-theme="light"]) {
+//     /* Backgrounds */
+//     --bg-primary: var(--color-slate-900);
+//     --bg-secondary: var(--color-slate-800);
+//     --bg-tertiary: var(--color-slate-700);
+//     --bg-inverse: var(--color-white);
+//     --bg-overlay: rgba(var(--color-slate-900-rgb), 0.9);
+
+//     /* Text */
+//     --text-primary: var(--color-slate-50);
+//     --text-secondary: var(--color-slate-300);
+//     --text-tertiary: var(--color-slate-400);
+//     --text-muted: var(--color-slate-500);
+//     --text-inverse: var(--color-slate-900);
+//     --text-heading: var(--color-slate-50);
+
+//     /* Borders */
+//     --border-default: var(--color-slate-700);
+//     --border-subtle: var(--color-slate-800);
+//     --border-strong: var(--color-slate-600);
+
+//     /* Accent Colors */
+//     --accent-primary: var(--color-blue-500);
+//     --accent-primary-hover: var(--color-blue-400);
+//     --accent-primary-light: rgba(var(--color-blue-500-rgb), 0.2);
+
+//     /* Status Colors */
+//     --success-bg: rgba(var(--color-green-500-rgb), 0.2);
+//     --success-text: var(--color-green-400);
+//     --error-bg: rgba(var(--color-red-500-rgb), 0.2);
+//     --error-text: var(--color-red-500);
+
+//     /* Component Tokens */
+//     --button-primary-bg: var(--color-blue-600);
+//     --button-primary-hover: var(--color-blue-500);
+//     --button-secondary-text: var(--color-slate-100);
+//     --button-secondary-border: var(--color-slate-600);
+//     --button-secondary-hover-bg: var(--color-slate-700);
+//     --card-bg: var(--color-slate-800);
+//     --card-shadow: 0 4px 6px -1px rgba(var(--color-black-rgb), 0.3),
+//       0 25px 50px -12px rgba(var(--color-black-rgb), 0.5);
+//     --input-text: var(--color-slate-50);
+//     --input-placeholder: var(--color-slate-500);
+//     --input-border: var(--color-slate-600);
+//     --input-border-focus: var(--color-slate-400);
+//     --navbar-bg: rgba(var(--color-slate-900-rgb), 0.9);
+//     --navbar-border: rgba(var(--color-slate-700-rgb), 0.6);
+//     --navbar-text: var(--color-slate-100);
+//     --navbar-link: var(--color-slate-400);
+//     --navbar-link-hover: var(--color-slate-50);
+//     --navbar-link-hover-bg: var(--color-slate-700);
+//     --tooltip-bg: var(--color-slate-700);
+//     --timeline-line: var(--color-slate-700);
+//     --timeline-dot: var(--color-slate-600);
+//   }
+// }
+
+/* ===========================================
+   CSS Reset & Base
+   =========================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+    font-family: var(--font-family-sans);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    overflow-x: hidden;
+}
+
+/* ===========================================
+   Selection
+   =========================================== */
+
+::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+}
+
+/* ===========================================
+   Typography Base
+   =========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-sans);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text-heading);
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.625;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+strong {
+    font-weight: 600;
+}
+
+/* ===========================================
+   Images
+   =========================================== */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===========================================
+   Focus States
+   =========================================== */
+
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* ===========================================
+   Utility Classes
+   =========================================== */
+
+.container {
+    width: 100%;
+    max-width: 115.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 4.8rem;
+        padding-right: 4.8rem;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

@@ -1,0 +1,36 @@
+---
+interface Props {
+    src: string;
+    alt: string;
+    caption?: string;
+}
+
+const { src, alt, caption } = Astro.props;
+---
+
+<figure class="showcase-figure">
+    <img src={src} alt={alt} class="showcase-figure__img" loading="lazy" />
+    {caption && <figcaption class="showcase-figure__caption">{caption}</figcaption>}
+</figure>
+
+<style>
+    .showcase-figure {
+        margin: 4rem 0;
+    }
+
+    .showcase-figure__img {
+        width: 100%;
+        border-radius: 1.2rem;
+        border: 1px solid var(--showcase-card-border);
+        box-shadow: var(--shadow-sm);
+        background: var(--showcase-card-bg);
+    }
+
+    .showcase-figure__caption {
+        text-align: center;
+        font-size: 1.4rem;
+        color: var(--showcase-caption);
+        margin-top: 1.2rem;
+        font-weight: 500;
+    }
+</style>

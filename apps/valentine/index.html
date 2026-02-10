@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>For You</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: 'Quicksand', sans-serif;
+                min-height: 100dvh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                background: linear-gradient(
+                    135deg,
+                    #fff0f3 0%,
+                    #fce4ec 30%,
+                    #f8bbd0 60%,
+                    #fff0f3 100%
+                );
+                background-size: 400% 400%;
+                animation: gradientShift 8s ease infinite;
+                position: relative;
+            }
+
+            @keyframes gradientShift {
+                0%,
+                100% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+            }
+
+            /* ========== Floating Hearts Background ========== */
+            .hearts-bg {
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+            .floating-heart {
+                position: absolute;
+                color: #e91e63;
+                opacity: 0;
+                animation: floatUp linear infinite;
+                user-select: none;
+                filter: drop-shadow(0 0 2px rgba(233, 30, 99, 0.3));
+            }
+
+            @keyframes floatUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(100vh) rotate(0deg) scale(0.5);
+                }
+                10% {
+                    opacity: 0.7;
+                }
+                90% {
+                    opacity: 0.7;
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-10vh) rotate(360deg) scale(1);
+                }
+            }
+
+            /* ========== Main Card ========== */
+            .card {
+                position: relative;
+                z-index: 10;
+                text-align: center;
+                padding: 3rem 2.5rem;
+                max-width: 480px;
+                width: 90%;
+            }
+
+            /* ========== Character Image ========== */
+            .character-wrapper {
+                position: relative;
+                display: inline-block;
+                margin-bottom: 1.5rem;
+            }
+
+            .character-img {
+                width: 220px;
+                height: 220px;
+                object-fit: contain;
+                animation: gentleBounce 2s ease-in-out infinite;
+                filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.1));
+                border-radius: 20px;
+            }
+
+            @keyframes gentleBounce {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-12px);
+                }
+            }
+
+            /* ========== Question Text ========== */
+            .question {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #880e4f;
+                margin-bottom: 2rem;
+                line-height: 1.3;
+                text-shadow: 0 1px 2px rgba(136, 14, 79, 0.1);
+            }
+
+            /* ========== Buttons ========== */
+            .buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.2rem;
+                min-height: 80px;
+                position: relative;
+            }
+
+            .btn {
+                font-family: 'Quicksand', sans-serif;
+                font-size: 1.15rem;
+                font-weight: 700;
+                padding: 0.85rem 2.5rem;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                letter-spacing: 0.02em;
+                position: relative;
+                outline: none;
+            }
+
+            .btn-yes {
+                background: linear-gradient(135deg, #4caf50, #66bb6a);
+                color: white;
+                box-shadow: 0 4px 16px rgba(76, 175, 80, 0.4);
+                animation: pulseGlow 2s ease-in-out infinite;
+            }
+
+            .btn-yes:hover {
+                transform: scale(1.08);
+                box-shadow: 0 6px 24px rgba(76, 175, 80, 0.5);
+            }
+
+            @keyframes pulseGlow {
+                0%,
+                100% {
+                    box-shadow: 0 4px 16px rgba(76, 175, 80, 0.4);
+                }
+                50% {
+                    box-shadow: 0 4px 28px rgba(76, 175, 80, 0.7);
+                }
+            }
+
+            .btn-no {
+                background: linear-gradient(135deg, #ef5350, #e53935);
+                color: white;
+                box-shadow: 0 4px 16px rgba(239, 83, 80, 0.3);
+                transition: all 0.2s ease;
+            }
+
+            .btn-no:hover {
+                transform: scale(0.95);
+            }
+
+            /* ========== Success State ========== */
+            .success-scene {
+                display: none;
+                text-align: center;
+                animation: fadeInUp 0.8s ease forwards;
+            }
+
+            .success-scene.visible {
+                display: block;
+            }
+
+            .ask-scene {
+                transition:
+                    opacity 0.4s ease,
+                    transform 0.4s ease;
+            }
+
+            .ask-scene.hidden {
+                opacity: 0;
+                transform: scale(0.9);
+                pointer-events: none;
+                display: none;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.95);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            .kissing-img {
+                width: 280px;
+                height: 280px;
+                object-fit: contain;
+                border-radius: 24px;
+                filter: drop-shadow(0 12px 32px rgba(233, 30, 99, 0.2));
+                animation: heartbeat 1.5s ease-in-out infinite;
+                margin-bottom: 1.5rem;
+            }
+
+            @keyframes heartbeat {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                15% {
+                    transform: scale(1.05);
+                }
+                30% {
+                    transform: scale(1);
+                }
+                45% {
+                    transform: scale(1.03);
+                }
+                60% {
+                    transform: scale(1);
+                }
+            }
+
+            .success-text {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #c2185b;
+                margin-bottom: 0.5rem;
+            }
+
+            .success-subtext {
+                font-size: 1.1rem;
+                color: #e91e63;
+                font-weight: 500;
+                opacity: 0.8;
+            }
+
+            /* ========== Heart Burst ========== */
+            .heart-burst {
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                z-index: 100;
+            }
+
+            .burst-heart {
+                position: absolute;
+                font-size: 1.5rem;
+                animation: burstOut 1.5s ease-out forwards;
+                pointer-events: none;
+            }
+
+            @keyframes burstOut {
+                0% {
+                    opacity: 1;
+                    transform: translate(0, 0) scale(0.5) rotate(0deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(var(--rot));
+                }
+            }
+
+            /* ========== Responsive ========== */
+            @media (max-width: 480px) {
+                .card {
+                    padding: 2rem 1.5rem;
+                }
+                .character-img {
+                    width: 180px;
+                    height: 180px;
+                }
+                .kissing-img {
+                    width: 230px;
+                    height: 230px;
+                }
+                .question {
+                    font-size: 1.6rem;
+                }
+                .btn {
+                    font-size: 1rem;
+                    padding: 0.75rem 2rem;
+                }
+                .success-text {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Floating Hearts Background -->
+        <div class="hearts-bg" id="heartsBg"></div>
+
+        <!-- Heart Burst Container -->
+        <div class="heart-burst" id="heartBurst"></div>
+
+        <!-- Main Card -->
+        <div class="card">
+            <!-- Ask Scene -->
+            <div class="ask-scene" id="askScene">
+                <div class="character-wrapper">
+                    <img
+                        src="will-you-be-my-valentine.gif"
+                        alt="Dudu holding a rose"
+                        class="character-img"
+                    />
+                </div>
+                <h1 class="question">Will you be my Valentine, Kalay?</h1>
+                <div class="buttons" id="buttonsContainer">
+                    <button class="btn btn-yes" id="btnYes">Yes!</button>
+                    <button class="btn btn-no" id="btnNo">No</button>
+                </div>
+            </div>
+
+            <!-- Success Scene -->
+            <div class="success-scene" id="successScene">
+                <img src="kissing.jpg" alt="Dudu and Bubu kissing" class="kissing-img" />
+                <p class="success-text">Yay! I knew you'd say yes!</p>
+                <p class="success-subtext">I love you so much~</p>
+            </div>
+        </div>
+
+        <script>
+            // ========== Floating Hearts ==========
+            const heartsBg = document.getElementById('heartsBg');
+            const heartSymbols = [
+                '\u2764',
+                '\u{1F497}',
+                '\u{1F496}',
+                '\u{1F495}',
+                '\u{1F49E}',
+                '\u2763',
+            ];
+
+            function createFloatingHeart() {
+                const heart = document.createElement('span');
+                heart.className = 'floating-heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+                const size = Math.random() * 1.2 + 0.6;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 6 + 6;
+                const delay = Math.random() * 2;
+
+                heart.style.cssText = `
+                left: ${left}%;
+                font-size: ${size}rem;
+                animation-duration: ${duration}s;
+                animation-delay: ${delay}s;
+            `;
+
+                heartsBg.appendChild(heart);
+
+                setTimeout(() => heart.remove(), (duration + delay) * 1000);
+            }
+
+            // Spawn hearts continuously
+            setInterval(createFloatingHeart, 150);
+            // Initial batch
+            for (let i = 0; i < 40; i++) {
+                setTimeout(createFloatingHeart, i * 100);
+            }
+
+            // ========== Runaway No Button ==========
+            const btnNo = document.getElementById('btnNo');
+            const btnYes = document.getElementById('btnYes');
+            const askScene = document.getElementById('askScene');
+            const successScene = document.getElementById('successScene');
+
+            let noAttempts = 0;
+            const noTexts = [
+                'No',
+                'Are you sure?',
+                'Really?',
+                'Think again!',
+                'Please?',
+                "Don't do this!",
+                "You're breaking Dudu's heart!",
+                'Last chance...',
+            ];
+            const yesGrowSteps = [1.15, 1.25, 1.35, 1.5, 1.65, 1.8, 1.95, 2.1];
+
+            function moveNoButton() {
+                noAttempts++;
+
+                // Update No button text
+                if (noAttempts < noTexts.length) {
+                    btnNo.textContent = noTexts[noAttempts];
+                }
+
+                // Shrink the No button
+                const noScale = Math.max(0.4, 1 - noAttempts * 0.08);
+                btnNo.style.transform = `scale(${noScale})`;
+
+                // Grow the Yes button
+                const yesScale = yesGrowSteps[Math.min(noAttempts, yesGrowSteps.length - 1)];
+                btnYes.style.transform = `scale(${yesScale})`;
+
+                // Move No button to random position within viewport
+                const viewW = window.innerWidth;
+                const viewH = window.innerHeight;
+                const btnW = btnNo.offsetWidth;
+                const btnH = btnNo.offsetHeight;
+
+                const maxX = viewW - btnW - 20;
+                const maxY = viewH - btnH - 20;
+
+                const randomX = Math.floor(Math.random() * maxX) + 10;
+                const randomY = Math.floor(Math.random() * maxY) + 10;
+
+                btnNo.style.position = 'fixed';
+                btnNo.style.left = randomX + 'px';
+                btnNo.style.top = randomY + 'px';
+                btnNo.style.zIndex = '50';
+            }
+
+            btnNo.addEventListener('mouseenter', moveNoButton);
+            btnNo.addEventListener('click', moveNoButton);
+            // Touch support
+            btnNo.addEventListener('touchstart', e => {
+                e.preventDefault();
+                moveNoButton();
+            });
+
+            // ========== Yes Button -> Success ==========
+            btnYes.addEventListener('click', () => {
+                triggerHeartBurst();
+                // Transition scenes
+                askScene.classList.add('hidden');
+                btnNo.style.display = 'none';
+
+                setTimeout(() => {
+                    successScene.classList.add('visible');
+                    // Increase heart spawn rate
+                    setInterval(createFloatingHeart, 60);
+                }, 400);
+            });
+
+            // ========== Heart Burst Animation ==========
+            function triggerHeartBurst() {
+                const burst = document.getElementById('heartBurst');
+                const cx = window.innerWidth / 2;
+                const cy = window.innerHeight / 2;
+
+                for (let i = 0; i < 30; i++) {
+                    const heart = document.createElement('span');
+                    heart.className = 'burst-heart';
+                    heart.textContent =
+                        heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+                    const angle = (Math.PI * 2 * i) / 30 + (Math.random() - 0.5) * 0.5;
+                    const distance = 150 + Math.random() * 250;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+                    const rot = (Math.random() - 0.5) * 720;
+
+                    heart.style.cssText = `
+                    left: ${cx}px;
+                    top: ${cy}px;
+                    --tx: ${tx}px;
+                    --ty: ${ty}px;
+                    --rot: ${rot}deg;
+                    animation-delay: ${Math.random() * 0.3}s;
+                    font-size: ${1 + Math.random() * 1.5}rem;
+                `;
+
+                    burst.appendChild(heart);
+                    setTimeout(() => heart.remove(), 2000);
+                }
+            }
+        </script>
+    </body>
+</html>

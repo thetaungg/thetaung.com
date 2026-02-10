@@ -1,0 +1,283 @@
+---
+import { experienceData } from '../data/experience';
+---
+
+<section id="experience" class="experience">
+    <div class="experience__container">
+        <div class="experience__header">
+            <h2 class="experience__title">Experience &<br />Education</h2>
+            <p class="experience__description">{experienceData.description}</p>
+        </div>
+
+        <div class="experience__content">
+            <div class="experience__timeline">
+                {
+                    experienceData.experiences.map((exp, index) => (
+                        <div
+                            class={`timeline-item ${exp.type === 'founder' ? 'timeline-item--founder' : ''}`}>
+                            <div
+                                class={`timeline-item__dot ${exp.isCurrent ? 'timeline-item__dot--current' : ''} ${exp.type === 'founder' ? 'timeline-item__dot--founder' : ''}`}
+                            />
+                            <div class="timeline-item__content">
+                                <div class="timeline-item__header">
+                                    <h3 class="timeline-item__title">{exp.title}</h3>
+                                    <span
+                                        class={`timeline-item__period ${exp.type === 'founder' ? 'timeline-item__period--founder' : ''}`}>
+                                        {exp.period}
+                                    </span>
+                                </div>
+                                <p
+                                    class={`timeline-item__company ${exp.type === 'founder' ? 'timeline-item__company--founder' : ''}`}>
+                                    {exp.company}
+                                </p>
+                                <p class="timeline-item__description">{exp.description}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+
+                <div class="timeline-item timeline-item--education">
+                    <div class="timeline-item__dot timeline-item__dot--education"></div>
+                    <div class="timeline-item__content">
+                        <h3 class="timeline-item__title timeline-item__title--edu">
+                            {experienceData.education.degree}
+                        </h3>
+                        <p class="timeline-item__edu-info">
+                            {experienceData.education.institution}, {
+                                experienceData.education.period
+                            }
+                        </p>
+                        {
+                            experienceData.education.description && (
+                                <p class="timeline-item__description timeline-item__description--edu">
+                                    {experienceData.education.description}
+                                </p>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    .experience {
+        padding: 9.6rem 0;
+        background: var(--bg-primary);
+
+        @media (min-width: 768px) {
+            padding: 9.6rem 0;
+        }
+    }
+
+    .experience__container {
+        max-width: 115.2rem;
+        margin: 0 auto;
+        padding: 0 2.4rem;
+        display: grid;
+        gap: 4.8rem;
+
+        @media (min-width: 640px) {
+            padding: 0 3.2rem;
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: 4fr 8fr;
+            gap: 4.8rem;
+            padding: 0 4.8rem;
+        }
+    }
+
+    .experience__header {
+        @media (min-width: 1024px) {
+            position: sticky;
+            top: 12.8rem;
+            align-self: start;
+        }
+    }
+
+    .experience__title {
+        font-size: 3rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        letter-spacing: -0.025em;
+        margin-bottom: 2.4rem;
+
+        @media (min-width: 1024px) {
+            font-size: 3.6rem;
+        }
+    }
+
+    .experience__description {
+        font-size: 1.8rem;
+        color: var(--text-tertiary);
+        font-weight: 300;
+    }
+
+    .experience__timeline {
+        position: relative;
+        padding-left: 3.2rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: calc(-2.9rem + 3.2rem + 0.8rem - 1px);
+            top: 0.8rem;
+            bottom: 0.8rem;
+            width: 2px;
+            background: var(--timeline-line);
+        }
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-bottom: 4.8rem;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    .timeline-item--education {
+        padding-top: 3.2rem;
+        margin-top: 4.8rem;
+        border-top: 1px solid var(--border-subtle);
+    }
+
+    .timeline-item__dot {
+        position: absolute;
+        left: -2.9rem;
+        top: 0.6rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 9999px;
+        background: var(--timeline-dot);
+        border: 3px solid var(--bg-primary);
+        box-shadow: var(--shadow-md);
+    }
+
+    .timeline-item__dot--current {
+        background: var(--timeline-dot-active);
+        box-shadow: 0 0 0 4px var(--timeline-dot-shadow);
+    }
+
+    .timeline-item__dot--founder {
+        background: linear-gradient(135deg, var(--accent-violet), var(--accent-orange-bright));
+        box-shadow:
+            0 0 0 4px rgba(var(--gradient-founder-start-rgb), 0.2),
+            0 0 20px rgba(var(--gradient-founder-start-rgb), 0.3);
+        animation: pulse-founder 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-founder {
+        0%,
+        100% {
+            box-shadow:
+                0 0 0 4px rgba(var(--gradient-founder-start-rgb), 0.2),
+                0 0 20px rgba(var(--gradient-founder-start-rgb), 0.3);
+        }
+        50% {
+            box-shadow:
+                0 0 0 6px rgba(var(--gradient-founder-start-rgb), 0.15),
+                0 0 30px rgba(var(--gradient-founder-end-rgb), 0.4);
+        }
+    }
+
+    .timeline-item--founder {
+        padding-bottom: 5.6rem;
+
+        .timeline-item__content {
+            padding: 2rem;
+            background: linear-gradient(
+                135deg,
+                rgba(var(--gradient-founder-start-rgb), 0.04),
+                rgba(var(--gradient-founder-end-rgb), 0.04)
+            );
+            border-radius: 1.6rem;
+            border: 1px solid rgba(var(--gradient-founder-start-rgb), 0.1);
+            margin-left: 0.8rem;
+        }
+    }
+
+    .timeline-item__period--founder {
+        background: linear-gradient(
+            135deg,
+            rgba(var(--gradient-founder-start-rgb), 0.15),
+            rgba(var(--gradient-founder-end-rgb), 0.15)
+        );
+        color: var(--accent-purple-dark);
+    }
+
+    .timeline-item__company--founder {
+        background: linear-gradient(135deg, var(--accent-violet), var(--accent-orange-bright));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 600;
+    }
+
+    .timeline-item__dot--education {
+        background: var(--bg-inverse);
+    }
+
+    .timeline-item__content {
+        padding-left: 0.8rem;
+    }
+
+    .timeline-item__header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+
+        @media (min-width: 640px) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .timeline-item__title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-heading);
+    }
+
+    .timeline-item__title--edu {
+        font-size: 1.8rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .timeline-item__period {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--text-tertiary);
+        background: var(--bg-tertiary);
+        padding: 0.4rem 1.2rem;
+        border-radius: 9999px;
+        width: fit-content;
+    }
+
+    .timeline-item__company {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--accent-primary);
+        margin-bottom: 1.2rem;
+    }
+
+    .timeline-item__description {
+        font-size: 1.6rem;
+        line-height: 1.75;
+        color: var(--text-secondary);
+    }
+
+    .timeline-item__edu-info {
+        font-size: 1.4rem;
+        color: var(--text-tertiary);
+    }
+
+    .timeline-item__description--edu {
+        margin-top: 1.2rem;
+    }
+</style>

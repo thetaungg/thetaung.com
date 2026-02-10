@@ -1,0 +1,137 @@
+.carousel {
+  position: relative;
+}
+
+.carouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3.2rem;
+}
+
+.carouselCounter {
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 1.4rem;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.carouselCurrent {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.carouselDivider {
+  opacity: 0.3;
+  margin: 0 0.4rem;
+}
+
+.carouselTotal {
+  opacity: 0.5;
+}
+
+.carouselNav {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.carouselBtn {
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+  &:hover {
+    background: var(--bg-inverse);
+    color: var(--text-inverse);
+    border-color: var(--bg-inverse);
+    transform: scale(1.08);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.carouselViewport {
+  position: relative;
+  overflow: visible;
+  padding: 2rem 0;
+
+  @media (min-width: 1024px) {
+    padding: 3rem 0;
+  }
+}
+
+.carouselTrack {
+  position: relative;
+  overflow: visible;
+}
+
+.carouselSlide {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  opacity: 0;
+
+  &:first-child {
+    position: relative;
+    opacity: 1;
+  }
+
+  @media (min-width: 1024px) {
+    left: 10%;
+    width: 80%;
+  }
+}
+
+.carouselProgress {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 4rem;
+}
+
+.carouselDot {
+  width: 4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: var(--border-default);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--border-strong);
+  }
+}
+
+.carouselDotActive {
+  background: var(--bg-inverse);
+  width: 6rem;
+}
+
+.carouselDotFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: var(--bg-inverse);
+  border-radius: 9999px;
+}

@@ -1,0 +1,80 @@
+.sectionBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 9999px;
+    background: var(--badge-default-bg);
+    margin-bottom: 2.4rem;
+}
+
+.dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 9999px;
+    background: currentColor;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Color variants - Filled */
+.blue {
+    background: var(--accent-primary-light);
+    color: var(--accent-primary-text);
+}
+
+.purple {
+    background: var(--accent-purple-light);
+    color: var(--accent-purple-text);
+}
+
+.green {
+    background: var(--accent-green-light);
+    color: var(--accent-green-text);
+}
+
+.orange {
+    background: var(--accent-orange-light);
+    color: var(--accent-orange-text);
+}
+
+.slate {
+    background: var(--accent-slate-light);
+    color: var(--accent-slate-text);
+}
+
+/* Outline variant */
+.outline {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 0;
+
+    &.blue,
+    &.green,
+    &.purple,
+    &.orange,
+    &.slate {
+        color: var(--text-tertiary);
+    }
+
+    &.green .dot {
+        background: var(--accent-green-bright);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}

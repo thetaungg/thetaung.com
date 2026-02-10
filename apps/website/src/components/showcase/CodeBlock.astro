@@ -1,0 +1,91 @@
+---
+interface Props {
+    filename?: string;
+    language?: string;
+}
+
+const { filename, language = 'javascript' } = Astro.props;
+---
+
+<div class="code-block">
+    {
+        filename && (
+            <div class="code-block__header">
+                <div class="code-block__dots">
+                    <div class="code-block__dot" />
+                    <div class="code-block__dot" />
+                    <div class="code-block__dot" />
+                </div>
+                <span class="code-block__filename">{filename}</span>
+            </div>
+        )
+    }
+    <div class="code-block__content">
+        <slot />
+    </div>
+</div>
+
+<style>
+    .code-block {
+        margin: 4rem 0;
+        border-radius: 1.2rem;
+        background: var(--code-bg);
+        border: 1px solid var(--code-border);
+        overflow: hidden;
+    }
+
+    .code-block__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.2rem 1.6rem;
+        background: var(--code-header-bg);
+        border-bottom: 1px solid var(--code-header-border);
+    }
+
+    .code-block__dots {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .code-block__dot {
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 9999px;
+        background: var(--code-dot);
+    }
+
+    .code-block__filename {
+        font-size: 1.2rem;
+        font-family: var(--font-family-mono, monospace);
+        color: var(--code-filename);
+    }
+
+    .code-block__content {
+        padding: 2.4rem;
+        overflow-x: auto;
+    }
+
+    .code-block__content :global(pre) {
+        margin: 0;
+        background: transparent !important;
+        font-family: var(--font-family-mono, monospace);
+        font-size: 1.4rem;
+        line-height: 1.7;
+    }
+
+    .code-block__content :global(code) {
+        font-family: inherit;
+        background: transparent !important;
+    }
+
+    /* Override Shiki's inline background styles on spans and lines */
+    .code-block__content :global(.line) {
+        background: transparent !important;
+    }
+
+    .code-block__content :global(span) {
+        background: transparent !important;
+    }
+</style>
