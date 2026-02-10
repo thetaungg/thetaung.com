@@ -15,9 +15,13 @@ import TableChartIcon from '@/assets/icons/table-chart.svg?raw';
 import TuneIcon from '@/assets/icons/tune.svg?raw';
 import VideocamIcon from '@/assets/icons/videocam.svg?raw';
 import ButlerAppWebsiteImage from '@/assets/showcase/butlerapp/landing-hero.webp';
+import ButlerAppWebsiteImageSm from '@/assets/showcase/butlerapp/landing-hero--sm.webp';
 import MoleculesComponentsImage from '@/assets/showcase/molecules/molecules-components.webp';
+import MoleculesComponentsImageSm from '@/assets/showcase/molecules/molecules-components--sm.webp';
 import SayaLandingImage from '@/assets/showcase/saya/landing-1.webp';
-import TaylorDBAppEditorImage from '@/assets/showcase/taylordb/app-editor.png';
+import SayaLandingImageSm from '@/assets/showcase/saya/landing-1--sm.webp';
+import TaylorDBAppEditorImage from '@/assets/showcase/taylordb/app-editor.webp';
+import TaylorDBAppEditorImageSm from '@/assets/showcase/taylordb/app-editor--sm.webp';
 
 export interface Feature {
     icon: string;
@@ -31,6 +35,7 @@ export interface Project {
     subtitle: string;
     category: string;
     image: string;
+    imageSm: string;
     imageAlt: string;
     technologies: string[];
     techColor: string;
@@ -62,6 +67,7 @@ export const projects: Project[] = [
         role: 'Frontend Engineer',
         timeline: '3+ Months',
         image: SayaLandingImage.src,
+        imageSm: SayaLandingImageSm.src,
         imageAlt: 'SAYA Hero Section',
         technologies: ['Nextjs', 'React', 'Firebase'],
         techColor: '#F63C47',
@@ -111,6 +117,7 @@ export const projects: Project[] = [
         role: 'Core Maintainer',
         timeline: '3+ Years',
         image: MoleculesComponentsImage.src,
+        imageSm: MoleculesComponentsImageSm.src,
         imageAlt: 'React Native Molecules Components',
         technologies: ['React Native', 'Typescript', 'Unistyles'],
         techColor: '#6750a4',
@@ -166,6 +173,7 @@ export const projects: Project[] = [
         role: 'Senior Frontend Engineer and Cofounder',
         timeline: '3+ Years',
         image: TaylorDBAppEditorImage.src,
+        imageSm: TaylorDBAppEditorImageSm.src,
         imageAlt: 'TaylorDB App Editor',
         technologies: ['React Native', 'Expo', 'React Native Molecules'],
         techColor: '#DA3D8F',
@@ -219,6 +227,7 @@ export const projects: Project[] = [
         role: 'Senior Frontend Engineer',
         timeline: '2+ Years',
         image: ButlerAppWebsiteImage.src,
+        imageSm: ButlerAppWebsiteImageSm.src,
         imageAlt: 'Butlerapp Website Hero Section',
         technologies: ['Astro', 'React', 'SCSS'],
         techColor: '#00D0AB',

@@ -24,12 +24,15 @@ export default function ProjectCard({ project, index, isSlideActive = true }: Pr
                 href={`/showcase/${project.id}`}
                 className={styles.slideImageWrapper}
                 {...focusableProps}>
-                <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    className={styles.slideImage}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                />
+                <picture>
+                    <source media="(max-width: 580px)" srcSet={project.imageSm} />
+                    <img
+                        src={project.image}
+                        alt={project.imageAlt}
+                        className={styles.slideImage}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                    />
+                </picture>
                 <div className={styles.slideImageOverlay} />
                 <div className={styles.slideImageContent}>
                     <span className={styles.slideCategory}>{project.category}</span>
