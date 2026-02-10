@@ -1,12 +1,18 @@
 import ComputerIllustration from '../assets/computer-illu.png';
 
 export const aboutData = {
-    title: 'A leader and an architect',
-    paragraph: `<p>My journey began at 16 with Java, but the dynamic web world pulled me into JavaScript in 2019. Within six months, I landed my first role, quickly evolving into a <strong>Frontend Lead</strong>.</p>
-<p>Today, I balance remote work for a Singapore-based tech firm—architecting Web & Mobile solutions—with selective freelance projects that challenge my creativity.</p>`,
+    title: 'A bit about me',
+    paragraph: `<p>I like building things and learning new things; I've enjoyed it since I was a kid. 
+    <br />
+    I started reading programming books as soon as I knew how to use a computer. 
+    Built WordPress sites, and blogged about how to use computers back then. 
+    <br />
+    Because of that passion, working with code feels more like a hobby than a job.</p>
+
+    <p>Today, I balance working at Webbee GmbH as a Senior Frontend Engineer and building my own products on the side.</p>`,
     quote: `
     "My proudest achievement? Building
-    <a href="#">Saya - the English Learning Platform</a>"
+    <a href="https://taylordb.ai">TaylorDB - CRM App Builder</a>"
   `,
     image: ComputerIllustration.src,
     imageAlt: 'Abstract shapes illustration',
