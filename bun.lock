@@ -38,7 +38,6 @@
         "@astrojs/mdx": "^4.3.13",
         "@astrojs/react": "^4.4.2",
         "@astrojs/sitemap": "^3.7.0",
-        "@google-recaptcha/react": "^2.4.0",
         "@tsparticles/engine": "^3.9.1",
         "@tsparticles/react": "^3.0.0",
         "@tsparticles/slim": "^3.9.1",
@@ -184,10 +183,6 @@
     "@eslint/object-schema": ["@eslint/object-schema@2.1.7", "", {}, "sha512-VtAOaymWVfZcmZbp6E2mympDIHvyjXs/12LqWYjVw6qjrfF+VK+fyG33kChz3nnK+SU5/NeHOqrTEHS8sXO3OA=="],
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.4.1", "", { "dependencies": { "@eslint/core": "^0.17.0", "levn": "^0.4.1" } }, "sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA=="],
-
-    "@google-recaptcha/core": ["@google-recaptcha/core@1.1.2", "", {}, "sha512-WHIVXntnc7b0FXkgNOO1Y7kYj+wnWVNkwluHz4ISmGfnGeUw5U/OezBPmZBOD9J+LK+hA11zvFGs0vElnc7UMw=="],
-
-    "@google-recaptcha/react": ["@google-recaptcha/react@2.4.0", "", { "dependencies": { "@google-recaptcha/core": "*" }, "peerDependencies": { "@types/react": "^17 || ^18|| ^19", "react": "^17 || ^18 || ^19" }, "optionalPeers": ["@types/react"] }, "sha512-JkjYifh4znkD30h8fMbU/Nlg8IgOjYoenq3DZ6JJy7WrTJ/lGCF/3S5S+nlommwOTEQ8C26hRE88tXJSbF450w=="],
 
     "@hono/zod-validator": ["@hono/zod-validator@0.5.0", "", { "peerDependencies": { "hono": ">=3.9.0", "zod": "^3.19.1" } }, "sha512-ds5bW6DCgAnNHP33E3ieSbaZFd5dkV52ZjyaXtGoR06APFrCtzAsKZxTHwOrJNBdXsi0e5wNwo5L4nVEVnJUdg=="],
 
