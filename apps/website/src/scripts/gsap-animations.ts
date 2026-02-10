@@ -307,11 +307,18 @@ export function initAllAnimations() {
         return;
     }
 
-    // Wait for page to be fully loaded and rendered
+    // Defer setup until the browser is idle so we don't force reflow during initial load/LCP.
+    const runWhenIdle = () => {
+        if (typeof requestIdleCallback !== 'undefined') {
+            requestIdleCallback(setupAnimations, { timeout: 2500 });
+        } else {
+            setTimeout(setupAnimations, 300);
+        }
+    };
     if (document.readyState === 'complete') {
-        setupAnimations();
+        runWhenIdle();
     } else {
-        window.addEventListener('load', setupAnimations);
+        window.addEventListener('load', runWhenIdle);
     }
 }
 
@@ -324,10 +331,9 @@ function setupAnimations() {
             initAboutAnimations();
             initSkillsAnimations();
             initExperienceAnimations();
-            // Defer refresh to a later frame so layout reads don’t happen in the same
-            // tick as trigger creation (avoids forced reflow / layout thrashing).
+            // Defer refresh; use safe:true so ScrollTrigger waits for layout to settle (less forced reflow).
             requestAnimationFrame(() => {
-                ScrollTrigger.refresh();
+                ScrollTrigger.refresh(true);
             });
         });
     });
@@ -348,7 +354,7 @@ if (typeof window !== 'undefined') {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             requestAnimationFrame(() => {
-                ScrollTrigger.refresh();
+                ScrollTrigger.refresh(true);
             });
         }, 200);
     });

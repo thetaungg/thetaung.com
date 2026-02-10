@@ -8,22 +8,22 @@ const contactSchema = z.object({
     name: z.string().min(1, 'Name is required'),
     email: z.string().email('Invalid email address'),
     message: z.string(),
-    recaptchaToken: z.string().min(1, 'reCAPTCHA token is required'),
+    turnstileToken: z.string().min(1, 'Turnstile token is required'),
 });
 
-async function verifyRecaptcha(token: string): Promise<boolean> {
-    const secretKey = process.env.GOOGLE_RECAPTCHA_SECRET_KEY;
-    if (!secretKey) throw new Error('GOOGLE_RECAPTCHA_SECRET_KEY is not set');
+async function verifyTurnstile(token: string): Promise<boolean> {
+    const secretKey = process.env.TURNSTILE_SECRET_KEY;
+    if (!secretKey) throw new Error('TURNSTILE_SECRET_KEY is not set');
 
-    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ secret: secretKey, response: token }),
     });
 
-    const result = (await response.json()) as { success: boolean; score?: number };
+    const result = (await response.json()) as { success: boolean };
 
-    return result.success && (result.score ?? 0) >= 0.5;
+    return result.success === true;
 }
 
 function getMailgunClient() {
@@ -37,11 +37,11 @@ function getMailgunClient() {
 export const contactRoutes = new Hono();
 
 contactRoutes.post('/', zValidator('json', contactSchema), async c => {
-    const { name, email, message, recaptchaToken } = c.req.valid('json');
+    const { name, email, message, turnstileToken } = c.req.valid('json');
 
-    const isHuman = await verifyRecaptcha(recaptchaToken);
+    const isHuman = await verifyTurnstile(turnstileToken);
     if (!isHuman) {
-        return c.json({ success: false, message: 'reCAPTCHA verification failed' }, 400);
+        return c.json({ success: false, message: 'Verification failed' }, 400);
     }
 
     const domain = process.env.MAILGUN_DOMAIN;

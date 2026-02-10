@@ -136,6 +136,10 @@
     color: var(--error-text);
 }
 
+.turnstile {
+    min-height: 4rem;
+}
+
 .footer {
     display: flex;
     flex-direction: column;
