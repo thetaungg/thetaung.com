@@ -316,15 +316,19 @@ export function initAllAnimations() {
 }
 
 function setupAnimations() {
-    // Small delay to ensure all elements are rendered
+    // Double rAF: first lets DOM/layout settle, second runs after paint so we don’t
+    // force reflow in the same tick as creating many ScrollTriggers.
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             initHeroAnimations();
             initAboutAnimations();
             initSkillsAnimations();
             initExperienceAnimations();
-            // Refresh ScrollTrigger after all animations are set up
-            ScrollTrigger.refresh();
+            // Defer refresh to a later frame so layout reads don’t happen in the same
+            // tick as trigger creation (avoids forced reflow / layout thrashing).
+            requestAnimationFrame(() => {
+                ScrollTrigger.refresh();
+            });
         });
     });
 }
@@ -338,12 +342,14 @@ export function cleanupAnimations() {
 
 // Auto-initialize when script loads
 if (typeof window !== 'undefined') {
-    // Refresh on resize
+    // Refresh on resize; run inside rAF so we don’t force reflow in the same tick as resize.
     let resizeTimeout: ReturnType<typeof setTimeout>;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            ScrollTrigger.refresh();
+            requestAnimationFrame(() => {
+                ScrollTrigger.refresh();
+            });
         }, 200);
     });
 }

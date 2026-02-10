@@ -172,8 +172,8 @@ export default function ProjectShowcase() {
                 <div ref={carouselRef}>
                     <Carousel
                         items={projects}
-                        renderSlide={(project: Project, index: number) => (
-                            <ProjectCard project={project} index={index} />
+                        renderSlide={(project: Project, index: number, isActive: boolean) => (
+                            <ProjectCard project={project} index={index} isSlideActive={isActive} />
                         )}
                         onSlideChange={handleSlideChange}
                         slideClassName={styles.projectSlide}

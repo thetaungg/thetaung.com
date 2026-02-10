@@ -9,15 +9,21 @@ import styles from './ProjectCard.module.scss';
 interface ProjectCardProps {
     project: Project;
     index: number;
+    /** When false, slide is aria-hidden; focusable elements get tabIndex=-1 for a11y */
+    isSlideActive?: boolean;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index, isSlideActive = true }: ProjectCardProps) {
     const colorVars = useMemo(() => deriveCardColors(project.techColor), [project.techColor]);
+    const focusableProps = isSlideActive ? {} : { tabIndex: -1 };
 
     return (
         <div className={styles.projectCardInner} style={colorVars as CSSProperties}>
             {/* Image Section */}
-            <a href={`/showcase/${project.id}`} className={styles.slideImageWrapper}>
+            <a
+                href={`/showcase/${project.id}`}
+                className={styles.slideImageWrapper}
+                {...focusableProps}>
                 <img
                     src={project.image}
                     alt={project.imageAlt}
@@ -72,14 +78,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 <div className={styles.slideCta}>
                     <a
                         href={`/showcase/${project.id}`}
-                        className={`${styles.slideBtn} ${styles.slideBtnPrimary}`}>
+                        className={`${styles.slideBtn} ${styles.slideBtnPrimary}`}
+                        {...focusableProps}>
                         {project.cta.primary.label}
                         <ArrowForwardIcon />
                     </a>
                     {project.cta.secondary && (
                         <a
                             href={project.cta.secondary.href}
-                            className={`${styles.slideBtn} ${styles.slideBtnSecondary}`}>
+                            className={`${styles.slideBtn} ${styles.slideBtnSecondary}`}
+                            {...focusableProps}>
                             {project.cta.secondary.label}
                             {
                                 <span
