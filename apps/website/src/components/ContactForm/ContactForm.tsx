@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import ArrowForwardIcon from '@/assets/icons/arrow-forward.svg?react';
 import CheckCircleIcon from '@/assets/icons/check-circle.svg?react';
@@ -38,6 +38,7 @@ type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 const ContactForm = () => {
     const turnstileContainerRef = useRef<HTMLDivElement>(null);
     const widgetIdRef = useRef<string | null>(null);
+    const turnstileLoadedRef = useRef(false);
 
     const [formData, setFormData] = useState<FormData>({
         name: '',
@@ -48,9 +49,10 @@ const ContactForm = () => {
     const [status, setStatus] = useState<FormStatus>('idle');
     const [statusMessage, setStatusMessage] = useState('');
 
-    // Load Turnstile script and render widget when form is mounted
-    useEffect(() => {
-        if (!TURNSTILE_SITE_KEY || !turnstileContainerRef.current) return;
+    const loadTurnstile = useCallback(() => {
+        if (turnstileLoadedRef.current || !TURNSTILE_SITE_KEY || !turnstileContainerRef.current)
+            return;
+        turnstileLoadedRef.current = true;
 
         const loadScript = (): Promise<void> => {
             if (window.turnstile) return Promise.resolve();
@@ -76,11 +78,6 @@ const ContactForm = () => {
                 });
             }
         });
-
-        return () => {
-            widgetIdRef.current = null;
-            setTurnstileToken(null);
-        };
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -132,7 +129,7 @@ const ContactForm = () => {
     const isLoading = status === 'loading';
 
     return (
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form onSubmit={handleSubmit} onFocus={loadTurnstile} className={styles.form}>
             <div className={styles.row}>
                 <div className={styles.field}>
                     <div className={styles.textInput}>
