@@ -26,8 +26,8 @@ export default function ProjectCard({ project, index, isSlideActive = true }: Pr
                 {...focusableProps}>
                 <img
                     src={project.image.src}
-                    srcSet={`${project.imageSm.src} ${project.imageSm.width}w, ${project.image.src} ${project.image.width}w`}
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 520px, 640px"
+                    srcSet={`${project.imageSm.src} 1x, ${project.image.src} 2x`}
+                    sizes="(max-width: 768px) 90vw, 520px"
                     alt={project.imageAlt}
                     className={styles.slideImage}
                     loading={index === 0 ? 'eager' : 'lazy'}

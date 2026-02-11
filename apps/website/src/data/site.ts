@@ -1,14 +1,15 @@
 import Envelope from '../assets/icons/envelope.svg?raw';
 import Github from '../assets/icons/github.svg?raw';
 import Linkedin from '../assets/icons/linkedin.svg?raw';
-import Me from '../assets/me.webp';
+import MeSmall from '../assets/me-96x96.webp';
 
 export const siteData = {
     title: 'Thet Aung - Senior Software Engineer',
     description:
         'Senior Software Engineer crafting scalable, human-centric web applications with clean code and thoughtful design.',
     author: 'Thet Aung',
-    avatar: Me.src,
+    // Use 96x96 avatar (navbar displays at 32x32, so this is comfortably 3x)
+    avatar: MeSmall.src,
 };
 
 export const navLinks = [
