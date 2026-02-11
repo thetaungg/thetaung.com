@@ -1,13 +1,13 @@
 ---
 import { heroData } from '../data/hero';
 import ParticlesBackground from './ParticlesBackground.tsx';
-import { SectionBadge } from './SectionBadge';
+import SectionBadge from './SectionBadge/SectionBadge';
 ---
 
 <section id="hero" class="hero">
     <div class="hero__container">
         <div class="hero__content">
-            <SectionBadge client:load text={heroData.badge} color="green" variant="outline" />
+            <SectionBadge text={heroData.badge} color="green" variant="outline" />
 
             <h1 class="hero__headline">
                 {heroData.headline.main}
@@ -31,7 +31,7 @@ import { SectionBadge } from './SectionBadge';
             </div>
         </div>
     </div>
-    <ParticlesBackground client:only="react" />
+    <ParticlesBackground client:idle />
 </section>
 
 <style lang="scss">
