@@ -5,7 +5,13 @@ import { aboutData } from '../data/about';
 <section id="about" class="about">
     <div class="about__container">
         <div class="about__image-wrapper">
-            <img src={aboutData.image} alt={aboutData.imageAlt} class="about__image" />
+            <img
+                src={aboutData.image.src}
+                alt={aboutData.imageAlt}
+                width={aboutData.image.width}
+                height={aboutData.image.height}
+                class="about__image"
+            />
         </div>
 
         <div class="about__content">

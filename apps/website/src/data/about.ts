@@ -14,6 +14,6 @@ export const aboutData = {
     "My proudest achievement? Building
     <a href="https://taylordb.ai">TaylorDB - CRM App Builder</a>"
   `,
-    image: ComputerIllustration.src,
+    image: ComputerIllustration,
     imageAlt: 'Abstract shapes illustration',
 };

@@ -34,8 +34,8 @@ export interface Project {
     title: string;
     subtitle: string;
     category: string;
-    image: string;
-    imageSm: string;
+    image: ImageMetadata;
+    imageSm: ImageMetadata;
     imageAlt: string;
     technologies: string[];
     techColor: string;
@@ -66,8 +66,8 @@ export const projects: Project[] = [
         category: 'Frontend',
         role: 'Frontend Engineer',
         timeline: '3+ Months',
-        image: SayaLandingImage.src,
-        imageSm: SayaLandingImageSm.src,
+        image: SayaLandingImage,
+        imageSm: SayaLandingImageSm,
         imageAlt: 'SAYA Hero Section',
         technologies: ['Nextjs', 'React', 'Firebase'],
         techColor: '#F63C47',
@@ -116,8 +116,8 @@ export const projects: Project[] = [
         category: 'Frontend',
         role: 'Core Maintainer',
         timeline: '3+ Years',
-        image: MoleculesComponentsImage.src,
-        imageSm: MoleculesComponentsImageSm.src,
+        image: MoleculesComponentsImage,
+        imageSm: MoleculesComponentsImageSm,
         imageAlt: 'React Native Molecules Components',
         technologies: ['React Native', 'Typescript', 'Unistyles'],
         techColor: '#6750a4',
@@ -172,8 +172,8 @@ export const projects: Project[] = [
         category: 'Web App',
         role: 'Senior Frontend Engineer and Cofounder',
         timeline: '3+ Years',
-        image: TaylorDBAppEditorImage.src,
-        imageSm: TaylorDBAppEditorImageSm.src,
+        image: TaylorDBAppEditorImage,
+        imageSm: TaylorDBAppEditorImageSm,
         imageAlt: 'TaylorDB App Editor',
         technologies: ['React Native', 'Expo', 'React Native Molecules'],
         techColor: '#DA3D8F',
@@ -226,8 +226,8 @@ export const projects: Project[] = [
         category: 'Website',
         role: 'Senior Frontend Engineer',
         timeline: '2+ Years',
-        image: ButlerAppWebsiteImage.src,
-        imageSm: ButlerAppWebsiteImageSm.src,
+        image: ButlerAppWebsiteImage,
+        imageSm: ButlerAppWebsiteImageSm,
         imageAlt: 'Butlerapp Website Hero Section',
         technologies: ['Astro', 'React', 'SCSS'],
         techColor: '#00D0AB',
