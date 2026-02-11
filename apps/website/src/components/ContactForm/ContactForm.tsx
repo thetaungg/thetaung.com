@@ -195,11 +195,7 @@ const ContactForm = () => {
                 </div>
             </div>
 
-            <div
-                ref={turnstileContainerRef}
-                className={styles.turnstile}
-                aria-label="Verification"
-            />
+            <div ref={turnstileContainerRef} className={styles.turnstile} />
 
             {statusMessage && (
                 <div className={status === 'success' ? styles.statusSuccess : styles.statusError}>
