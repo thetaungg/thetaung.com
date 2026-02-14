@@ -52,8 +52,7 @@ export interface Project {
 export const showcaseIntro = {
     badge: 'Selected Case Studies',
     title: 'Recent\nWork',
-    description:
-        'Deep dives into projects where technical complexity meets intuitive design. Each application represents a challenge solved through the MERN stack.',
+    description: 'These are my proudest works and the products that actually shipped )',
 };
 
 //     techColor: '#ea580c',
@@ -101,7 +100,7 @@ export const projects: Project[] = [
         ],
         cta: {
             primary: {
-                label: 'Visit Website',
+                label: 'Visit SAYA',
                 href: 'https://saya.education',
                 icon: OpenInNewIcon,
             },
@@ -154,7 +153,7 @@ export const projects: Project[] = [
         ],
         cta: {
             primary: {
-                label: 'Visit Docs Site',
+                label: 'Visit Molecules Docs',
                 href: 'https://molecules.taylordb.ai',
                 icon: ArrowForwardIcon,
             },
@@ -212,7 +211,7 @@ export const projects: Project[] = [
         ],
         cta: {
             primary: {
-                label: 'Visit Website',
+                label: 'Visit TaylorDB',
                 href: 'https://taylordb.ai/signup',
                 icon: ExploreIcon,
             },
@@ -256,7 +255,7 @@ export const projects: Project[] = [
         ],
         cta: {
             primary: {
-                label: 'Visit Website',
+                label: 'Visit Butlerapp',
                 href: 'https://butlerapp.de',
                 icon: ExploreIcon,
             },

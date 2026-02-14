@@ -27,7 +27,7 @@ export interface Skill {
 export const skillsData = {
     title: 'Skills & Technologies',
     description:
-        'An expanding universe of tools and technologies I leverage to build robust, scalable applications.',
+        'These are the tools/techs that I like using often for my work or my personal projects.',
     rows: [
         // Row 1 — 7 items
         [

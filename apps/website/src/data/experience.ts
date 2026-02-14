@@ -16,7 +16,7 @@ export interface Education {
 
 export const experienceData = {
     title: 'Experience &\nEducation',
-    description: 'A chronological overview of my professional journey and academic background.',
+    description: 'A timeline of my career and my never ending education.',
     experiences: [
         {
             title: 'Senior Frontend Engineer & Cofounder',
@@ -36,7 +36,7 @@ export const experienceData = {
             isCurrent: false,
         },
         {
-            title: 'Frontend Developer',
+            title: 'Frontend Developer & Frontend Lead',
             company: 'Nuzay Myanmar',
             period: 'Feb, 2020 — Nov, 2021',
             description:
