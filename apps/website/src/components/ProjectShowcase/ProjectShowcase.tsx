@@ -16,107 +16,115 @@ export default function ProjectShowcase() {
     const headerRef = useRef<HTMLDivElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
 
-    // Scroll-triggered animations
+    // Scroll-triggered animations (deferred to batch layout reads into a single frame)
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Header animation
-            if (headerRef.current) {
-                gsap.fromTo(
-                    headerRef.current,
-                    { y: 60, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: 1.2,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: headerRef.current,
-                            start: 'top 80%',
-                            toggleActions: 'play none none reverse',
-                        },
-                    },
-                );
-            }
-
-            // Carousel viewport animation
-            if (carouselRef.current) {
-                const viewport = carouselRef.current.querySelector('[role="region"]');
-                const controls =
-                    carouselRef.current.querySelector('[role="region"]')?.previousElementSibling;
-                const progress =
-                    carouselRef.current.querySelector('[role="region"]')?.nextElementSibling;
-
-                if (viewport) {
+        let ctx: gsap.Context;
+        const rafId = requestAnimationFrame(() => {
+            ctx = gsap.context(() => {
+                // Header animation
+                if (headerRef.current) {
                     gsap.fromTo(
-                        viewport,
-                        { y: 80, opacity: 0 },
+                        headerRef.current,
+                        { y: 60, opacity: 0 },
                         {
                             y: 0,
                             opacity: 1,
                             duration: 1.2,
                             ease: 'power3.out',
                             scrollTrigger: {
+                                trigger: headerRef.current,
+                                start: 'top 80%',
+                                toggleActions: 'play none none reverse',
+                            },
+                        },
+                    );
+                }
+
+                // Carousel viewport animation
+                if (carouselRef.current) {
+                    const viewport = carouselRef.current.querySelector('[role="region"]');
+                    const controls =
+                        carouselRef.current.querySelector(
+                            '[role="region"]',
+                        )?.previousElementSibling;
+                    const progress =
+                        carouselRef.current.querySelector('[role="region"]')?.nextElementSibling;
+
+                    if (viewport) {
+                        gsap.fromTo(
+                            viewport,
+                            { y: 80, opacity: 0 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1.2,
+                                ease: 'power3.out',
+                                scrollTrigger: {
+                                    trigger: viewport,
+                                    start: 'top 85%',
+                                    toggleActions: 'play none none reverse',
+                                },
+                            },
+                        );
+
+                        // Parallax effect for carousel
+                        gsap.to(viewport, {
+                            yPercent: -8,
+                            ease: 'none',
+                            scrollTrigger: {
                                 trigger: viewport,
-                                start: 'top 85%',
-                                toggleActions: 'play none none reverse',
+                                start: 'top bottom',
+                                end: 'bottom top',
+                                scrub: 1,
                             },
-                        },
-                    );
+                        });
+                    }
 
-                    // Parallax effect for carousel
-                    gsap.to(viewport, {
-                        yPercent: -8,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: viewport,
-                            start: 'top bottom',
-                            end: 'bottom top',
-                            scrub: 1,
-                        },
-                    });
-                }
-
-                // Controls animation
-                if (controls) {
-                    gsap.fromTo(
-                        controls,
-                        { x: -40, opacity: 0 },
-                        {
-                            x: 0,
-                            opacity: 1,
-                            duration: 0.8,
-                            ease: 'power2.out',
-                            scrollTrigger: {
-                                trigger: controls,
-                                start: 'top 90%',
-                                toggleActions: 'play none none reverse',
+                    // Controls animation
+                    if (controls) {
+                        gsap.fromTo(
+                            controls,
+                            { x: -40, opacity: 0 },
+                            {
+                                x: 0,
+                                opacity: 1,
+                                duration: 0.8,
+                                ease: 'power2.out',
+                                scrollTrigger: {
+                                    trigger: controls,
+                                    start: 'top 90%',
+                                    toggleActions: 'play none none reverse',
+                                },
                             },
-                        },
-                    );
-                }
+                        );
+                    }
 
-                // Progress dots animation
-                if (progress) {
-                    gsap.fromTo(
-                        progress,
-                        { y: 20, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 0.8,
-                            ease: 'power2.out',
-                            scrollTrigger: {
-                                trigger: progress,
-                                start: 'top 90%',
-                                toggleActions: 'play none none reverse',
+                    // Progress dots animation
+                    if (progress) {
+                        gsap.fromTo(
+                            progress,
+                            { y: 20, opacity: 0 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                duration: 0.8,
+                                ease: 'power2.out',
+                                scrollTrigger: {
+                                    trigger: progress,
+                                    start: 'top 90%',
+                                    toggleActions: 'play none none reverse',
+                                },
                             },
-                        },
-                    );
+                        );
+                    }
                 }
-            }
+            });
         });
 
-        return () => ctx.revert();
+        return () => {
+            cancelAnimationFrame(rafId);
+            ctx?.revert();
+        };
     }, []);
 
     // Content animations synced to the carousel's slide timeline

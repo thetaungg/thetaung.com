@@ -12,30 +12,36 @@ export default function Contact() {
     const sectionRef = useRef<HTMLElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
 
-    // Scroll-triggered animations
+    // Scroll-triggered animations (deferred to batch layout reads into a single frame)
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Card fade up animation
-            if (cardRef.current) {
-                gsap.fromTo(
-                    cardRef.current,
-                    { y: 100, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: 1.2,
-                        ease: 'power3.out',
-                        scrollTrigger: {
-                            trigger: sectionRef.current,
-                            start: 'top 75%',
-                            toggleActions: 'play none none reverse',
+        let ctx: gsap.Context;
+        const rafId = requestAnimationFrame(() => {
+            ctx = gsap.context(() => {
+                // Card fade up animation
+                if (cardRef.current) {
+                    gsap.fromTo(
+                        cardRef.current,
+                        { y: 100, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1.2,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: sectionRef.current,
+                                start: 'top 75%',
+                                toggleActions: 'play none none reverse',
+                            },
                         },
-                    },
-                );
-            }
+                    );
+                }
+            });
         });
 
-        return () => ctx.revert();
+        return () => {
+            cancelAnimationFrame(rafId);
+            ctx?.revert();
+        };
     }, []);
 
     return (

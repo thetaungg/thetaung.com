@@ -4,6 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// Prevent extra layout reads on mobile resize/orientation changes
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 // Check for reduced motion preference
 const prefersReducedMotion = () => {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
