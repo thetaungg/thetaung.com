@@ -19,4 +19,8 @@ export default defineConfig({
             theme: 'github-dark',
         },
     },
+    build: {
+        // Inline all CSS into the HTML so no render-blocking stylesheet requests are needed.
+        inlineStylesheets: 'always',
+    },
 });
