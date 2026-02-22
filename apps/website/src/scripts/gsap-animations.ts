@@ -210,93 +210,56 @@ function initSkillsAnimations() {
         );
     }
 
-    // Blobs scroll-linked movement
-    gsap.to('.skills__blob--1', {
-        yPercent: -20,
-        xPercent: 10,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.skills',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 2,
-        },
-    });
-
-    gsap.to('.skills__blob--2', {
-        yPercent: 30,
-        xPercent: -15,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.skills',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.5,
-        },
-    });
-
-    gsap.to('.skills__blob--3', {
-        yPercent: -25,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.skills',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
-        },
-    });
+    // Blobs are handled by CSS keyframe animations — no ScrollTrigger needed.
 }
 
 /**
  * Initialize Experience section animations
+ * Uses ScrollTrigger.batch() to handle all items with 2 observers instead of N*2.
  */
 function initExperienceAnimations() {
     const experience = document.querySelector('.experience');
     if (!experience) return;
 
-    // Timeline items staggered reveal
-    const timelineItems = document.querySelectorAll('.timeline-item');
-
-    timelineItems.forEach(element => {
-        const dot = element.querySelector('.timeline-item__dot');
-        const content = element.querySelector('.timeline-item__content');
-
-        // Content slide in
-        if (content) {
+    // Content slide in — one batch observer for all items
+    ScrollTrigger.batch('.timeline-item__content', {
+        onEnter: elements => {
             gsap.fromTo(
-                content,
+                elements,
                 { x: -40, opacity: 0 },
                 {
                     x: 0,
                     opacity: 1,
                     duration: 0.7,
                     ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: element,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse',
-                    },
+                    stagger: 0.1,
                 },
             );
-        }
+        },
+        onLeaveBack: elements => {
+            gsap.to(elements, { x: -40, opacity: 0, duration: 0.4, stagger: 0.05 });
+        },
+        start: 'top 85%',
+    });
 
-        // Dot pop animation
-        if (dot) {
+    // Dot pop — one batch observer for all dots
+    ScrollTrigger.batch('.timeline-item__dot', {
+        onEnter: elements => {
             gsap.fromTo(
-                dot,
+                elements,
                 { scale: 0 },
                 {
                     scale: 1,
                     duration: 0.4,
                     ease: 'back.out(2)',
-                    scrollTrigger: {
-                        trigger: element,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse',
-                    },
+                    stagger: 0.1,
                 },
             );
-        }
+        },
+        onLeaveBack: elements => {
+            gsap.to(elements, { scale: 0, duration: 0.3, stagger: 0.05 });
+        },
+        start: 'top 85%',
     });
 }
 

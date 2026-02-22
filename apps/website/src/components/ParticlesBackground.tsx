@@ -12,7 +12,7 @@ const options: ISourceOptions = {
             value: 'transparent',
         },
     },
-    fpsLimit: 120,
+    fpsLimit: 60,
     interactivity: {
         events: {
             onHover: {
