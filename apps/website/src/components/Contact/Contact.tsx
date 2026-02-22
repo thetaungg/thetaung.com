@@ -45,7 +45,7 @@ export default function Contact() {
     }, []);
 
     return (
-        <section id="contact" ref={sectionRef} className={styles.contact}>
+        <section id="contact" ref={sectionRef} className={styles.contact} data-rev="2026-02-22">
             <div className={styles.contactContainer}>
                 <div ref={cardRef} className={styles.contactCard}>
                     <div className={styles.contactHeader}>
